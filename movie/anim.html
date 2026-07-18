@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<!-- 完全連続モーション版 40秒動画。window.seek(t) で任意時刻の画を決定論的に描画する。
+     Playwright がフレームごとに seek→screenshot して動画化する(render_frames.py) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&family=Shippori+Mincho:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#0B0B0F;--ink:#1B1B20;--paper:#F6F4EE;--red:#E60012;--red-deep:#B4000E;
+  --red-bright:#FF554A;--muted:#605F66;
+  --sans:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
+  --serif:"Shippori Mincho","Yu Mincho",serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#000}
+body{font-family:var(--sans);font-feature-settings:"palt"}
+#stage{position:absolute;inset:0;overflow:hidden}
+.sc{position:absolute;inset:0;opacity:0}
+.bg-dark{background:
+  radial-gradient(50% 44% at 80% 12%, rgba(230,0,18,.13), transparent 70%),
+  linear-gradient(170deg,#14141C 0%, #0B0B0F 55%, #08080C 100%)}
+.bg-light{background:
+  radial-gradient(46% 40% at 86% 10%, rgba(230,0,18,.08), transparent 70%),
+  linear-gradient(176deg,#FFFFFF 0%, #FBFAF7 58%, #F4F2EC 100%)}
+.gridl::before{content:"";position:absolute;inset:0;
+  background-image:linear-gradient(rgba(20,18,12,.04) 1px, transparent 1px),linear-gradient(90deg, rgba(20,18,12,.04) 1px, transparent 1px);
+  background-size:96px 96px;mask-image:radial-gradient(85% 85% at 50% 42%, #000 0%, transparent 96%)}
+.gridd::before{content:"";position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+  background-size:96px 96px;mask-image:radial-gradient(85% 85% at 50% 42%, #000 0%, transparent 96%)}
+.abs{position:absolute}
+.hidden{display:none}
+
+/* ---- パーティクル ---- */
+.pt{position:absolute;border-radius:50%;pointer-events:none}
+
+/* ---- S1 ---- */
+#title1{left:0;right:0;top:150px;text-align:center;font-family:var(--serif);font-size:92px;font-weight:700;letter-spacing:.08em;color:#F0EEE8}
+#title1 span{display:inline-block}
+#sub1{left:0;right:0;top:300px;text-align:center;font-size:30px;letter-spacing:.32em;color:rgba(240,238,232,.55);font-weight:500}
+#clock{right:200px;top:190px}
+#lamp{left:330px;top:330px;width:520px;height:420px;background:radial-gradient(ellipse at 50% 30%, rgba(255,214,140,.32), transparent 65%)}
+
+/* ---- S2 吹き出し ---- */
+.wb{position:absolute;display:flex;align-items:flex-start;gap:22px}
+.wb .bub{background:rgba(255,255,255,.97);color:var(--ink);border-radius:10px 30px 30px 30px;
+  padding:30px 46px;font-size:40px;font-weight:700;box-shadow:0 26px 70px rgba(0,0,0,.5)}
+.wb .avp{width:84px;height:84px;border-radius:50%;background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;flex:none;overflow:hidden}
+
+/* ---- S3 ---- */
+#no3{left:0;right:0;top:330px;text-align:center;font-size:68px;font-weight:900;color:#B9B6AD}
+#noline{left:50%;top:392px;width:820px;height:9px;margin-left:-410px;background:var(--red);border-radius:5px;transform-origin:left center}
+#yes3wrap{left:0;right:0;top:470px;text-align:center;overflow:hidden;height:220px}
+#yes3{font-family:var(--serif);font-size:118px;font-weight:800;letter-spacing:.05em;color:var(--ink)}
+#yes3 em{font-style:normal;color:var(--red)}
+#yesline{left:50%;top:700px;width:540px;height:7px;margin-left:-470px;background:var(--red);border-radius:4px;transform-origin:left center}
+
+/* ---- キャラ: AI社員くん ---- */
+.aikun{position:absolute;width:360px;height:430px}
+/* ---- S4 ---- */
+#head4{left:0;right:0;top:120px;text-align:center;font-size:74px;font-weight:900;color:var(--ink);letter-spacing:.02em}
+#head4 em{font-style:normal;color:var(--red)}
+#sub4{left:0;right:0;top:250px;text-align:center;font-size:32px;color:var(--muted);font-weight:500}
+.card4{position:absolute;left:1050px;top:360px;width:560px;background:linear-gradient(158deg,#20202A 0%,#15151B 50%,#0F0F14 100%);
+  border:1px solid rgba(255,255,255,.18);border-radius:34px;padding:46px 48px 38px;color:#fff;
+  box-shadow:0 60px 130px rgba(0,0,0,.4), 0 0 100px rgba(230,0,18,.14)}
+.card4::before{content:"";position:absolute;top:0;left:0;right:0;height:8px;border-radius:34px 34px 0 0;
+  background:linear-gradient(90deg,var(--red-deep),var(--red) 45%,#FF5A4E)}
+.card4 .hd{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:26px}
+.card4 .hd .t{font-family:var(--serif);font-size:23px;font-weight:700;letter-spacing:.3em}
+.card4 .hd .e{font-size:14px;letter-spacing:.22em;color:rgba(255,255,255,.4)}
+.card4 .face{display:flex;align-items:center;gap:26px;margin-bottom:26px}
+.card4 .avatar{width:104px;height:104px;border-radius:26px;flex:none;position:relative;
+  background:radial-gradient(120% 120% at 30% 20%, #FF4B3E 0%, var(--red) 45%, #8E000B 100%);
+  box-shadow:0 14px 34px rgba(230,0,18,.4);display:flex;align-items:center;justify-content:center}
+.card4 .avatar span{font-size:38px;font-weight:900}
+.card4 .rlb{font-size:15px;letter-spacing:.26em;color:rgba(255,255,255,.42);margin-bottom:8px}
+#role4{font-size:26px;font-weight:700;line-height:1.5;transform-origin:center top}
+.card4 .rows{border-top:1px solid rgba(255,255,255,.09);padding-top:20px;display:grid;gap:12px}
+.card4 .rows div{display:flex;justify-content:space-between;font-size:18px}
+.card4 .rows dt{color:rgba(255,255,255,.4)}
+.card4 .rows dd{color:rgba(255,255,255,.85);font-weight:500}
+
+/* ---- S5 ---- */
+.doc5{position:absolute;left:360px;top:230px;width:470px;height:640px}
+.doc5 .pg{position:absolute;inset:0;background:#fff;border-radius:12px;box-shadow:0 28px 70px rgba(20,18,12,.18);border:1px solid #EEEBE3}
+.doc5 .cover{position:absolute;inset:0;border-radius:14px;overflow:hidden;
+  background:linear-gradient(158deg,#1C1C23 0%,#111116 55%,#0C0C10 100%);
+  padding:54px 52px;display:flex;flex-direction:column;color:#F4F2EC;border:1px solid rgba(255,255,255,.1)}
+.doc5 .cover::before{content:"";position:absolute;top:0;bottom:0;left:0;width:15px;background:linear-gradient(var(--red-deep),var(--red))}
+.doc5 .cl{font-size:16px;letter-spacing:.32em;color:var(--red-bright);font-weight:700;margin-bottom:44px}
+.doc5 h3{font-family:var(--serif);font-size:50px;font-weight:700;line-height:1.6;letter-spacing:.1em}
+.doc5 .rule{width:64px;height:4px;background:var(--red);margin:36px 0 32px}
+.doc5 p{font-size:20px;color:rgba(255,255,255,.6);line-height:2}
+#txt5{position:absolute;left:960px;top:400px;width:800px}
+#txt5 h2{font-family:var(--serif);font-size:66px;font-weight:700;line-height:1.9;color:var(--ink);letter-spacing:.05em}
+#txt5 h2 em{font-style:normal;color:var(--red)}
+#txt5 .sub{margin-top:22px;font-size:30px;color:var(--muted)}
+#seal5{position:absolute;left:600px;top:600px;width:170px;height:170px;transform-origin:center}
+#flash5{position:absolute;left:685px;top:685px;width:0;height:0;border-radius:50%;border:6px solid rgba(230,0,18,.5)}
+
+/* ---- S6 ---- */
+#badge6{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);
+  display:inline-flex;align-items:center;border:5px solid var(--red);color:var(--red);
+  font-size:78px;font-weight:900;letter-spacing:.2em;padding:40px 100px;border-radius:999px;background:rgba(255,255,255,.75)}
+#logo6{position:absolute;left:50%;top:170px;transform:translateX(-50%);height:76px;width:auto;filter:brightness(0)}
+#sub6{position:absolute;left:0;right:0;top:66%;text-align:center;font-size:38px;color:var(--muted);font-weight:700;letter-spacing:.1em}
+.cf{position:absolute;width:22px;height:14px}
+
+/* ---- S7 ---- */
+#slog7{position:absolute;left:0;right:0;top:400px;text-align:center;font-size:190px;font-weight:900;color:#fff;letter-spacing:.02em;line-height:1.15}
+#slog7 .g{display:inline-block}
+#slog7 .r{color:var(--red)}
+#url7{position:absolute;left:0;right:0;top:700px;text-align:center;font-size:34px;letter-spacing:.14em;color:rgba(255,255,255,.55)}
+#logo7{position:absolute;left:50%;top:230px;transform:translateX(-50%);height:60px;filter:brightness(0) invert(1);opacity:.9}
+#seal7{position:absolute;left:1430px;top:330px;width:200px;height:200px;transform-origin:center}
+#flash7{position:absolute;inset:0;background:#fff}
+#wipeL{position:absolute;left:50%;top:50%;width:100px;height:100px;margin:-50px 0 0 -50px;border-radius:50%;background:#FBFAF7}
+#wipeD{position:absolute;left:50%;top:50%;width:100px;height:100px;margin:-50px 0 0 -50px;border-radius:50%;background:#0B0B0F}
+</style>
+</head>
+<body>
+<div id="stage">
+
+<!-- ============ S1+S2: 夜のオフィス ============ -->
+<section class="sc bg-dark gridd" id="sc1">
+  <div class="abs" id="lamp"></div>
+  <!-- デスク+社長さん -->
+  <svg class="abs" id="bossWrap" viewBox="0 0 900 760" style="left:180px;top:330px;width:900px;height:760px">
+    <g id="bossG">
+      <!-- 椅子 -->
+      <rect x="330" y="300" width="240" height="260" rx="26" fill="#1E1E28"/>
+      <!-- 体(スーツ) -->
+      <path d="M300 560 Q300 420 450 420 Q600 420 600 560 L600 620 L300 620 Z" fill="#232330"/>
+      <path d="M420 430 L450 470 L480 430 L465 425 L450 445 L435 425 Z" fill="#F4F2EC"/>
+      <path d="M446 460 L454 460 L460 520 L440 520 Z" fill="#C4001F"/>
+      <!-- 頭 -->
+      <g id="bossHead">
+        <circle cx="450" cy="330" r="88" fill="#F2C9A4"/>
+        <path d="M362 320 Q360 232 450 232 Q540 232 538 320 L520 318 Q522 258 450 258 Q378 258 380 318 Z" fill="#3A3A44"/>
+        <g id="eyesTired">
+          <rect x="398" y="330" width="34" height="6" rx="3" fill="#2A2A32"/>
+          <rect x="468" y="330" width="34" height="6" rx="3" fill="#2A2A32"/>
+        </g>
+        <g id="eyesHappy" display="none">
+          <path d="M398 334 Q415 320 432 334" stroke="#2A2A32" stroke-width="7" fill="none" stroke-linecap="round"/>
+          <path d="M468 334 Q485 320 502 334" stroke="#2A2A32" stroke-width="7" fill="none" stroke-linecap="round"/>
+        </g>
+        <rect x="394" y="300" width="40" height="8" rx="4" fill="#3A3A44" id="browL"/>
+        <rect x="466" y="300" width="40" height="8" rx="4" fill="#3A3A44" id="browR"/>
+        <path id="mouthSad" d="M424 394 Q450 380 476 394" stroke="#B06A50" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <path id="mouthSmile" d="M420 386 Q450 406 480 386" stroke="#B06A50" stroke-width="7" fill="none" stroke-linecap="round" display="none"/>
+      </g>
+      <!-- デスク -->
+      <rect x="60" y="620" width="780" height="34" rx="10" fill="#20202B"/>
+      <rect x="90" y="654" width="720" height="106" rx="8" fill="#181820"/>
+      <!-- ノートPC -->
+      <g id="laptop">
+        <path d="M560 620 L780 620 L800 540 L580 540 Z" fill="#2A2A36"/>
+        <path d="M583 548 L793 548 L779 612 L567 612 Z" fill="#9AD1FF" id="lapGlow"/>
+        <rect x="540" y="616" width="270" height="10" rx="5" fill="#33333F"/>
+      </g>
+    </g>
+  </svg>
+  <!-- ？マーク -->
+  <div class="abs q1" id="qm0" style="left:700px;top:470px;font-size:100px;font-weight:900;color:var(--red-bright);font-family:var(--serif)">?</div>
+  <div class="abs q1" id="qm1" style="left:830px;top:395px;font-size:76px;font-weight:900;color:rgba(255,255,255,.75);font-family:var(--serif)">?</div>
+  <div class="abs q1" id="qm2" style="left:612px;top:380px;font-size:60px;font-weight:900;color:rgba(255,85,74,.8);font-family:var(--serif)">?</div>
+  <!-- 汗 -->
+  <svg class="abs" id="sweat" viewBox="0 0 40 52" style="left:620px;top:640px;width:44px;height:57px">
+    <path d="M20 2 Q34 26 34 36 A14 14 0 1 1 6 36 Q6 26 20 2Z" fill="#7FB8E8"/>
+  </svg>
+  <!-- 時計 -->
+  <svg class="abs" id="clock" viewBox="0 0 140 140" style="width:150px;height:150px;right:140px;top:140px">
+    <circle cx="70" cy="70" r="64" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.25)" stroke-width="5"/>
+    <line id="handM" x1="70" y1="70" x2="70" y2="20" stroke="rgba(255,255,255,.8)" stroke-width="5" stroke-linecap="round"/>
+    <line id="handH" x1="70" y1="70" x2="98" y2="52" stroke="rgba(255,255,255,.55)" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="70" cy="70" r="6" fill="#E60012"/>
+  </svg>
+  <p class="abs" id="title1"></p>
+  <p class="abs" id="sub1">経営者のあなたへ</p>
+  <!-- 悩み吹き出し -->
+  <div class="wb" id="wb0" style="left:1030px;top:360px"><span class="avp"><svg viewBox="0 0 24 24" style="width:46px;height:46px;margin-top:10px" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.5" r="4"/><path d="M3.5 21.5c1.6-4 5-6 8.5-6s6.9 2 8.5 6"/></svg></span><p class="bub">AI、何に使えばいい？</p></div>
+  <div class="wb" id="wb1" style="left:1100px;top:555px"><span class="avp"><svg viewBox="0 0 24 24" style="width:46px;height:46px;margin-top:10px" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.5" r="4"/><path d="M3.5 21.5c1.6-4 5-6 8.5-6s6.9 2 8.5 6"/></svg></span><p class="bub">契約したのに、使われていない</p></div>
+  <div class="wb" id="wb2" style="left:980px;top:745px"><span class="avp"><svg viewBox="0 0 24 24" style="width:46px;height:46px;margin-top:10px" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.5" r="4"/><path d="M3.5 21.5c1.6-4 5-6 8.5-6s6.9 2 8.5 6"/></svg></span><p class="bub">逆に仕事が増えないか、不安</p></div>
+  <div class="abs" id="dim1" style="inset:0;background:#05050A"></div>
+</section>
+
+<!-- ============ S3: 転換 ============ -->
+<section class="sc bg-light gridl" id="sc3">
+  <p class="abs" id="no3">どのAIツールを入れるか</p>
+  <div class="abs" id="noline"></div>
+  <div class="abs" id="yes3wrap"><p id="yes3"><em>任せる仕事</em>を、決める。</p></div>
+  <div class="abs" id="yesline"></div>
+</section>
+
+<!-- ============ S4: AI社員くん+社員証 ============ -->
+<section class="sc bg-light gridl" id="sc4">
+  <p class="abs" id="head4">御社専用の<em>“AI社員”</em>を設計。</p>
+  <p class="abs" id="sub4">御社の仕事を、一社ごとに分析します。</p>
+  <div class="abs aikun" id="aikun4" style="left:230px;top:420px"></div>
+  <div class="card4" id="card4">
+    <div class="hd"><span class="t">AI社員証</span><span class="e">EMPLOYEE CARD</span></div>
+    <div class="face">
+      <div class="avatar"><span>AI</span></div>
+      <div><p class="rlb">担 当 業 務</p><p id="role4">商談後の追客漏れを防ぐ</p></div>
+    </div>
+    <dl class="rows">
+      <div><dt>配属先</dt><dd>御社（一社ごとに設計）</dd></div>
+      <div><dt>設計</dt><dd>審査制・無料</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- ============ S5: 設計書+誠実 ============ -->
+<section class="sc gridl" id="sc5" style="background:#F7F6F1">
+  <div class="doc5" id="doc5">
+    <div class="pg" style="transform:rotate(4deg) translate(16px,8px)"></div>
+    <div class="pg" style="transform:rotate(-3deg) translate(-12px,4px)"></div>
+    <div class="cover">
+      <p class="cl">CONFIDENTIAL</p>
+      <h3>AI社員<br>採用設計書</h3>
+      <div class="rule"></div>
+      <p>御社専用に設計した<br>AI活用の全体設計と導入計画</p>
+    </div>
+  </div>
+  <svg id="seal5" viewBox="0 0 96 96"><use href="#sealSym"/></svg>
+  <div id="flash5"></div>
+  <div id="txt5">
+    <h2>雇わない方がよければ、<br><em>そうお伝えします。</em></h2>
+    <p class="sub">売るための設計は、しません。</p>
+  </div>
+  <div class="abs aikun" id="aikun5" style="left:1560px;top:640px;width:260px;height:310px"></div>
+</section>
+
+<!-- ============ S6: 無料+紙吹雪 ============ -->
+<section class="sc bg-light gridl" id="sc6">
+  <img id="logo6" src="uicity-logo.svg" alt="UIcity">
+  <span id="badge6">審査制・無料</span>
+  <p id="sub6">御社の悩みを、お聞かせください。</p>
+  <svg class="abs" id="boss6" viewBox="300 210 320 260" style="left:120px;top:700px;width:400px;height:325px">
+    <g>
+      <circle cx="450" cy="330" r="88" fill="#F2C9A4"/>
+      <path d="M362 320 Q360 232 450 232 Q540 232 538 320 L520 318 Q522 258 450 258 Q378 258 380 318 Z" fill="#3A3A44"/>
+      <path d="M398 334 Q415 320 432 334" stroke="#2A2A32" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <path d="M468 334 Q485 320 502 334" stroke="#2A2A32" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <rect x="394" y="296" width="40" height="8" rx="4" fill="#3A3A44"/>
+      <rect x="466" y="296" width="40" height="8" rx="4" fill="#3A3A44"/>
+      <path d="M416 382 Q450 410 484 382" stroke="#B06A50" stroke-width="8" fill="none" stroke-linecap="round"/>
+    </g>
+  </svg>
+</section>
+
+<!-- ============ S7: クロージング ============ -->
+<section class="sc bg-dark gridd" id="sc7">
+  <img id="logo7" src="uicity-logo.svg" alt="UIcity">
+  <p id="slog7"><span class="g">AI</span><span class="g">を</span><span class="g r">、</span><span class="g">雇おう</span><span class="g r">。</span></p>
+  <svg id="seal7" viewBox="0 0 96 96"><use href="#sealSym"/></svg>
+  <p id="url7">ai-yatoou-lp.vercel.app</p>
+  <div class="abs aikun" id="aikun7" style="left:1520px;top:760px;width:230px;height:275px"></div>
+  <div id="flash7"></div>
+</section>
+
+<!-- ワイプ+共通 -->
+<div id="wipeL"></div>
+<div id="wipeD"></div>
+
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="sealSym" viewBox="0 0 96 96">
+    <rect x="4" y="4" width="88" height="88" rx="10" fill="none" stroke="#E60012" stroke-width="5"/>
+    <text x="31" y="43" font-family="'Shippori Mincho','Yu Mincho',serif" font-size="30" font-weight="700" fill="#E60012" text-anchor="middle">採</text>
+    <text x="65" y="43" font-family="'Shippori Mincho','Yu Mincho',serif" font-size="30" font-weight="700" fill="#E60012" text-anchor="middle">用</text>
+    <text x="31" y="79" font-family="'Shippori Mincho','Yu Mincho',serif" font-size="30" font-weight="700" fill="#E60012" text-anchor="middle">設</text>
+    <text x="65" y="79" font-family="'Shippori Mincho','Yu Mincho',serif" font-size="30" font-weight="700" fill="#E60012" text-anchor="middle">計</text>
+  </symbol>
+  <!-- AI社員くん本体 -->
+  <symbol id="aikunSym" viewBox="0 0 360 430">
+    <g id="ak-body">
+      <!-- 脚 -->
+      <rect x="128" y="360" width="38" height="52" rx="18" fill="#15151B"/>
+      <rect x="194" y="360" width="38" height="52" rx="18" fill="#15151B"/>
+      <!-- 体 -->
+      <rect x="96" y="240" width="168" height="140" rx="42" fill="#1B1B23"/>
+      <!-- ストラップ -->
+      <path d="M140 250 L172 320 M220 250 L188 320" stroke="#E60012" stroke-width="9" stroke-linecap="round"/>
+      <!-- 社員証 -->
+      <g class="ak-idcard">
+        <rect x="150" y="316" width="60" height="42" rx="7" fill="#F4F2EC"/>
+        <rect x="150" y="316" width="60" height="8" rx="4" fill="#E60012"/>
+        <rect x="157" y="330" width="20" height="20" rx="5" fill="#E60012"/>
+        <rect x="182" y="332" width="22" height="4" rx="2" fill="#B9B6AD"/>
+        <rect x="182" y="341" width="16" height="4" rx="2" fill="#B9B6AD"/>
+      </g>
+      <!-- 左腕 -->
+      <rect x="70" y="258" width="34" height="86" rx="17" fill="#15151B"/>
+      <!-- 右腕(振る) -->
+      <g class="ak-armR">
+        <rect x="256" y="258" width="34" height="86" rx="17" fill="#15151B"/>
+      </g>
+      <!-- 頭 -->
+      <g class="ak-head">
+        <rect x="60" y="24" width="240" height="212" rx="56" fill="url(#akGrad)"/>
+        <rect x="74" y="38" width="212" height="184" rx="46" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="3"/>
+        <line x1="180" y1="24" x2="180" y2="0" stroke="#15151B" stroke-width="8" stroke-linecap="round"/>
+        <circle cx="180" cy="-6" r="12" fill="#E60012" stroke="#fff" stroke-width="3"/>
+        <g class="ak-eyes">
+          <circle cx="136" cy="120" r="20" fill="#fff"/>
+          <circle cx="224" cy="120" r="20" fill="#fff"/>
+        </g>
+        <path class="ak-mouth" d="M154 172 Q180 190 206 172" stroke="#fff" stroke-width="8" fill="none" stroke-linecap="round"/>
+      </g>
+    </g>
+  </symbol>
+  <defs>
+    <radialGradient id="akGrad" cx="30%" cy="18%" r="1.2">
+      <stop offset="0" stop-color="#FF4B3E"/><stop offset="0.5" stop-color="#E60012"/><stop offset="1" stop-color="#9E000D"/>
+    </radialGradient>
+  </defs>
+</svg>
+</div>
+
+<script>
+/* ================= ミニモーションエンジン ================= */
+const $=id=>document.getElementById(id);
+const cl=(x,a,b)=>Math.max(a,Math.min(b,x));
+const nrm=(t,a,b)=>cl((t-a)/(b-a),0,1);
+const lerp=(a,b,k)=>a+(b-a)*k;
+const E={
+  oc:k=>1-Math.pow(1-k,3),
+  io:k=>k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2,
+  ob:k=>{const c=1.9;return 1+(c+1)*Math.pow(k-1,3)+c*Math.pow(k-1,2)},
+  oe:k=>k===0?0:k===1?1:Math.pow(2,-9*k)*Math.sin((k*9-.75)*(2*Math.PI/3))+1,
+  iq:k=>k*k
+};
+function pop(t,t0,d){const k=nrm(t,t0,t0+(d||0.5));return{s:k===0?0:E.ob(k),o:cl(k*4,0,1)}}
+function T(el,str,op){el.style.transform=str;if(op!==undefined)el.style.opacity=op}
+
+/* AI社員くんをインスタンス化（useのシャドウDOMは操作不可のためインライン展開） */
+const AKML = `
+<svg viewBox="0 0 360 430" style="width:100%;height:100%;overflow:visible">
+  <g>
+    <rect x="128" y="360" width="38" height="52" rx="18" fill="#15151B"/>
+    <rect x="194" y="360" width="38" height="52" rx="18" fill="#15151B"/>
+    <rect x="96" y="240" width="168" height="140" rx="42" fill="#1B1B23"/>
+    <path d="M140 250 L172 320 M220 250 L188 320" stroke="#E60012" stroke-width="9" stroke-linecap="round"/>
+    <g>
+      <rect x="150" y="316" width="60" height="42" rx="7" fill="#F4F2EC"/>
+      <rect x="150" y="316" width="60" height="8" rx="4" fill="#E60012"/>
+      <rect x="157" y="330" width="20" height="20" rx="5" fill="#E60012"/>
+      <rect x="182" y="332" width="22" height="4" rx="2" fill="#B9B6AD"/>
+      <rect x="182" y="341" width="16" height="4" rx="2" fill="#B9B6AD"/>
+    </g>
+    <rect x="70" y="258" width="34" height="86" rx="17" fill="#15151B"/>
+    <g class="ak-armR"><rect x="256" y="258" width="34" height="86" rx="17" fill="#15151B"/></g>
+    <g class="ak-head">
+      <rect x="60" y="24" width="240" height="212" rx="56" fill="url(#akGrad)"/>
+      <rect x="74" y="38" width="212" height="184" rx="46" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="3"/>
+      <line x1="180" y1="24" x2="180" y2="0" stroke="#15151B" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="180" cy="-6" r="12" fill="#E60012" stroke="#fff" stroke-width="3"/>
+      <g class="ak-eyes">
+        <circle cx="136" cy="120" r="20" fill="#fff"/>
+        <circle cx="224" cy="120" r="20" fill="#fff"/>
+      </g>
+      <path d="M154 172 Q180 190 206 172" stroke="#fff" stroke-width="8" fill="none" stroke-linecap="round"/>
+    </g>
+  </g>
+</svg>`;
+for(const id of["aikun4","aikun5","aikun7"]){ $(id).innerHTML = AKML; }
+function akParts(id){
+  const r=$(id).querySelector("svg");
+  return{root:$(id),head:r.querySelector(".ak-head"),eyes:r.querySelector(".ak-eyes"),
+         armR:r.querySelector(".ak-armR")}
+}
+const AK4=akParts("aikun4"),AK5=akParts("aikun5"),AK7=akParts("aikun7");
+
+/* タイトルを1文字ずつ分解 */
+const t1="こんな経験、ありませんか。";
+$("title1").innerHTML=[...t1].map(c=>"<span>"+c+"</span>").join("");
+const T1SP=[...$("title1").querySelectorAll("span")];
+
+/* パーティクル(浮遊ドット)を各シーンに */
+function makeDots(host,n,color,seed){
+  const arr=[];
+  for(let i=0;i<n;i++){
+    const d=document.createElement("div");d.className="pt";
+    const sz=3+((i*7+seed)%6);
+    d.style.width=d.style.height=sz+"px";d.style.background=color;
+    host.appendChild(d);
+    arr.push({el:d,x:((i*173+seed*97)%1920),base:((i*311+seed*53)%1080),sp:14+((i*29)%22),ph:(i*0.7)%6.28,sz});
+  }
+  return arr;
+}
+const DOTS1=makeDots($("sc1"),22,"rgba(255,255,255,.25)",1);
+const DOTS4=makeDots($("sc4"),18,"rgba(230,0,18,.18)",2);
+const DOTS7=makeDots($("sc7"),22,"rgba(255,255,255,.22)",3);
+function dots(arr,t,on){
+  for(const p of arr){
+    if(!on){p.el.style.opacity=0;continue}
+    const y=((p.base - t*p.sp)%1140+1140)%1140-40;
+    p.el.style.opacity=.8;
+    p.el.style.transform="translate("+(p.x+Math.sin(t*.7+p.ph)*14)+"px,"+y+"px)";
+  }
+}
+/* 紙吹雪 */
+const CF=[];
+{const cols=["#E60012","#1B1B20","#FFFFFF","#FF554A"];
+ for(let i=0;i<30;i++){
+   const d=document.createElement("div");d.className="cf";
+   d.style.background=cols[i%4];if(i%5===0)d.style.borderRadius="50%";
+   $("sc6").appendChild(d);
+   CF.push({el:d,vx:(((i*67)%200)-100)*4.4,vy:-((i*97)%160)*2.6-330,rs:(((i*53)%9)-4)*260,
+            x0:960+(((i*37)%260)-130),y0:470+(((i*53)%150)-75)});
+ }}
+
+/* 吹き出し・？のpop時刻 */
+const QT=[1.3,2.2,3.1];
+const WBT=[6.8,8.7,10.6];
+
+function blink(t,seed){const p=2.6+seed;const ph=((t+seed*1.7)%p);return ph<0.12?0.12:1}
+
+/* ================= メイン: seek ================= */
+window.seek=function(t){
+  /* ---- シーン表示区間 ---- */
+  const sc1v=t<13.25, sc3v=t>=13.25&&t<18.9, sc4v=t>=18.55&&t<26.7,
+        sc5v=t>=26.4&&t<31.7, sc6v=t>=31.4&&t<35.05, sc7v=t>=35.05;
+  $("sc1").style.opacity=sc1v?1:0;
+  $("sc3").style.opacity=sc3v?cl(nrm(t,18.3,18.9)===1?0:1-nrm(t,18.4,18.9),0,1):0;
+  $("sc4").style.opacity=sc4v?1-nrm(t,26.4,26.7):0;
+  $("sc5").style.opacity=sc5v?1-nrm(t,31.4,31.7):0;
+  $("sc6").style.opacity=sc6v?1:0;
+  $("sc7").style.opacity=sc7v?1:0;
+
+  /* ---- 画面シェイク(朱印2発) ---- */
+  let shx=0,shy=0;
+  for(const ts of[28.05,37.2]){
+    if(t>ts&&t<ts+0.5){const d=t-ts;const a=Math.exp(-d*9)*16;shx+=Math.sin(d*95)*a;shy+=Math.cos(d*77)*a*.7}
+  }
+  $("stage").style.transform="translate("+shx+"px,"+shy+"px)";
+
+  /* ================= S1+S2 ================= */
+  if(sc1v){
+    dots(DOTS1,t,true);
+    /* カメラ: ゆっくり寄る */
+    const z=1+0.05*E.io(nrm(t,0,13));
+    $("sc1").style.transform="scale("+z+")";
+    /* ランプ呼吸 */
+    $("lamp").style.opacity=.75+.25*Math.sin(t*1.8);
+    /* 時計 */
+    $("handM").setAttribute("transform","rotate("+(t*60)+" 70 70)");
+    $("handH").setAttribute("transform","rotate("+(t*5)+" 70 70)");
+    /* 社長さん: 呼吸+うなだれ */
+    const sag=Math.sin(t*1.1)*1.5+(t<13?3:0);
+    $("bossG").setAttribute("transform","translate(0,"+(Math.sin(t*1.3)*4)+") rotate("+sag*0.4+" 450 500)");
+    $("bossHead").setAttribute("transform","rotate("+(Math.sin(t*0.9)*2.5+4)+" 450 380)");
+    $("lapGlow").style.opacity=.75+.25*Math.sin(t*7)*Math.sin(t*3.1);
+    /* ？マーク */
+    [...Array(3)].forEach((_,i)=>{
+      const p=pop(t,QT[i],0.6);
+      const fl=Math.sin((t-QT[i])*2.2+i)*8;
+      T($("qm"+i),"translateY("+(-fl-(t>QT[i]?10:0))+"px) scale("+p.s+")",p.o*(t<12?1:cl(1-nrm(t,12,12.8),0,1)));
+    });
+    /* 汗 */
+    const sw=pop(t,10.2,0.5);
+    T($("sweat"),"translateY("+nrm(t,10.2,12)*26+"px) scale("+sw.s+")",sw.o);
+    /* タイトル: 1文字ずつ */
+    T1SP.forEach((sp,i)=>{
+      const k=nrm(t,1.7+i*0.085,2.05+i*0.085);
+      sp.style.opacity=k;sp.style.transform="translateY("+(1-E.oc(k))*26+"px)";
+    });
+    /* タイトルは吹き出しが出る前(6.1-6.7)に退場して衝突を避ける */
+    const tfade=cl(1-nrm(t,6.1,6.7),0,1);
+    $("sub1").style.opacity=nrm(t,3.4,4.2)*tfade;
+    $("title1").style.opacity=tfade;
+    /* 吹き出し */
+    [0,1,2].forEach(i=>{
+      const p=pop(t,WBT[i],0.55);
+      const fl=Math.sin((t-WBT[i])*1.6+i*2)*7;
+      const el=$("wb"+i);
+      el.style.opacity=p.o;
+      el.style.transform="translateY("+(-fl)+"px) scale("+p.s+")";
+      el.style.transformOrigin="left top";
+    });
+    /* 徐々に暗く */
+    $("dim1").style.opacity=nrm(t,10.8,12.9)*0.4;
+  }else{dots(DOTS1,t,false)}
+
+  /* ---- 白ワイプ(S2→S3) ---- */
+  {const k=nrm(t,12.75,13.25), k2=nrm(t,13.25,13.8);
+   const r=k<1?E.iq(k)*30:30*(1-E.oc(k2));
+   $("wipeL").style.transform="scale("+r+")";
+   $("wipeL").style.opacity=(k>0&&k2<1)?1:0;}
+
+  /* ================= S3 ================= */
+  if(sc3v){
+    const z=1+0.045*E.io(nrm(t,13.2,18.8));
+    $("sc3").style.transform="scale("+z+")";
+    const a=nrm(t,13.45,13.95);
+    T($("no3"),"translateY("+(1-E.oc(a))*40+"px)",a);
+    const ln=nrm(t,14.15,14.5);
+    T($("noline"),"scaleX("+E.oc(ln)+") rotate(-2.5deg)",ln>0?1:0);
+    const b=nrm(t,14.8,15.55);
+    $("yes3").style.transform="translateY("+(1-E.oc(b))*160+"px)";
+    $("yes3").style.opacity=cl(b*2,0,1);
+    const yl=nrm(t,15.6,16.05);
+    T($("yesline"),"scaleX("+E.oc(yl)+")",yl>0?1:0);
+  }
+
+  /* ================= S4 ================= */
+  if(sc4v){
+    dots(DOTS4,t,true);
+    const enter=nrm(t,18.6,19.15);
+    $("sc4").style.transform="translateX("+(1-E.oc(enter))*220+"px)";
+    /* 見出し */
+    const h=nrm(t,20.6,21.2);
+    T($("head4"),"translateY("+(1-E.oc(h))*36+"px)",h);
+    $("sub4").style.opacity=nrm(t,21.2,21.8);
+    /* AI社員くん: 落下→スカッシュ→浮遊+手振り+まばたき */
+    const drop=nrm(t,19.0,19.5);
+    let y=-560*(1-E.oc(drop));
+    let sy=1,sx=1;
+    if(t>19.4&&t<19.75){const k=nrm(t,19.4,19.575);const k2=nrm(t,19.575,19.75);
+      sy=k2===0?lerp(1,0.82,E.oc(k)):lerp(0.82,1.06,E.oc(k2));sx=2-sy}
+    else if(t>=19.75){sy=1+Math.sin((t-19.75)*2.4)*0.02;sx=1-Math.sin((t-19.75)*2.4)*0.015;y=Math.sin((t-19.75)*1.9)*10}
+    T(AK4.root,"translateY("+y+"px) scale("+sx+","+sy+")");
+    AK4.root.style.transformOrigin="center bottom";
+    AK4.eyes.setAttribute("transform","translate(0,120) scale(1,"+blink(t,0.3)+") translate(0,-120)");
+    const wv=t>19.9&&t<21.6?Math.sin((t-19.9)*11)*38-30:0;
+    AK4.armR.setAttribute("transform","rotate("+wv+" 273 262)");
+    AK4.head.setAttribute("transform","rotate("+Math.sin(t*1.7)*2.4+" 180 130)");
+    /* カード: 右からスッ+ロール切替 */
+    const ce=nrm(t,19.9,20.5);
+    T($("card4"),"translateX("+(1-E.oc(ce))*560+"px) rotate("+(1-E.oc(ce))*6+"deg)",ce);
+    const roles=["商談後の追客漏れを防ぐ","問い合わせに一次対応する","会議の期限を整理する"];
+    const flips=[22.6,24.6];
+    let ri=0,fx=1;
+    for(let f=0;f<flips.length;f++){
+      const ft=flips[f];
+      if(t>=ft+0.36){ri=f+1}
+      else if(t>ft&&t<ft+0.36){
+        const k=nrm(t,ft,ft+0.36);
+        fx=Math.abs(Math.cos(k*Math.PI));
+        ri=k<0.5?f:f+1;
+      }
+    }
+    $("role4").textContent=roles[ri];
+    $("role4").style.transform="scaleY("+cl(fx,0.05,1)+")";
+  }else{dots(DOTS4,t,false)}
+
+  /* ================= S5 ================= */
+  if(sc5v){
+    const en=nrm(t,26.5,27.1);
+    $("sc5").style.transform="none";
+    T($("doc5"),"translateY("+(1-E.oc(en))*520+"px) rotate("+(1-E.oc(en))*-3+"deg)",en);
+    /* 朱印: 上から降ってドン */
+    const st=nrm(t,27.7,28.05);
+    const s=lerp(3.0,1.0,E.iq(st));
+    $("seal5").style.opacity=st>0?1:0;
+    T($("seal5"),"scale("+s+") rotate("+lerp(-14,-5,st)+"deg)");
+    /* 着印フラッシュリング */
+    if(t>28.02&&t<28.5){const k=nrm(t,28.02,28.5);
+      $("flash5").style.width=$("flash5").style.height=k*360+"px";
+      $("flash5").style.margin=(-k*180)+"px 0 0 "+(-k*180)+"px";
+      $("flash5").style.opacity=1-k;
+    }else{$("flash5").style.opacity=0}
+    /* 紙の凹み */
+    if(t>28.0&&t<28.22){const k=nrm(t,28.0,28.22);$("doc5").style.transform+=" scale("+(1-Math.sin(k*Math.PI)*0.03)+")"}
+    /* テキスト */
+    const tx=nrm(t,28.5,29.2);
+    T($("txt5"),"translateY("+(1-E.oc(tx))*40+"px)",tx);
+    /* AI社員くん: お辞儀 */
+    const bow=t>29.4&&t<30.9?Math.sin(nrm(t,29.4,30.9)*Math.PI)*20:0;
+    T(AK5.root,"rotate("+bow+"deg)");
+    AK5.root.style.transformOrigin="center bottom";
+    AK5.root.style.opacity=nrm(t,27.0,27.5);
+    AK5.eyes.setAttribute("transform","translate(0,120) scale(1,"+blink(t,1.1)+") translate(0,-120)");
+  }
+
+  /* ================= S6 ================= */
+  if(sc6v){
+    const p=pop(t,31.75,0.7);
+    T($("badge6"),"translate(-50%,-50%) scale("+lerp(0.3,1,E.oe(nrm(t,31.75,32.55)))+")",p.o);
+    $("logo6").style.opacity=nrm(t,32.0,32.6);
+    $("sub6").style.opacity=nrm(t,32.7,33.3);
+    /* 紙吹雪 */
+    for(const c of CF){
+      const d=t-31.85;
+      if(d<0.07){c.el.style.opacity=0;continue}
+      const x=c.x0+c.vx*d, y=c.y0+c.vy*d+880*d*d;
+      c.el.style.opacity=cl(1-nrm(d,1.4,2.1),0,1);
+      c.el.style.transform="translate("+x+"px,"+y+"px) rotate("+c.rs*d+"deg)";
+    }
+    /* 社長さん(笑顔)ぴょこ */
+    const b=pop(t,32.5,0.6);
+    T($("boss6"),"translateY("+(1-b.s)*160+"px)",b.o);
+  }
+
+  /* ---- 黒ワイプ(S6→S7) ---- */
+  {const k=nrm(t,34.6,35.05), k2=nrm(t,35.05,35.5);
+   const r=k<1?E.iq(k)*30:30*(1-E.oc(k2));
+   $("wipeD").style.transform="scale("+r+")";
+   $("wipeD").style.opacity=(k>0&&k2<1)?1:0;}
+
+  /* ================= S7 ================= */
+  if(sc7v){
+    dots(DOTS7,t,true);
+    $("logo7").style.opacity=nrm(t,35.3,35.9)*0.9;
+    /* スローガン1文字ずつ跳ねる */
+    [...$("slog7").querySelectorAll(".g")].forEach((g,i)=>{
+      const p=pop(t,35.45+i*0.17,0.5);
+      g.style.opacity=p.o;g.style.transform="translateY("+(1-p.s)*60+"px) scale("+cl(p.s,0,1.15)+")";
+    });
+    /* 朱印スラム */
+    const st=nrm(t,36.9,37.2);
+    $("seal7").style.opacity=st>0?1:0;
+    T($("seal7"),"scale("+lerp(3.4,1,E.iq(st))+") rotate("+lerp(-16,-6,st)+"deg)");
+    /* 白フラッシュ */
+    $("flash7").style.opacity=(t>37.18&&t<37.3)?(1-nrm(t,37.18,37.3))*0.85:0;
+    $("url7").style.opacity=nrm(t,37.9,38.5);
+    /* デュオ登場 */
+    const duo=pop(t,38.1,0.6);
+    T(AK7.root,"translateY("+(1-duo.s)*200+"px)",duo.o);
+    AK7.eyes.setAttribute("transform","translate(0,120) scale(1,"+blink(t,0.6)+") translate(0,-120)");
+    const wv=t>38.5?Math.sin((t-38.5)*9)*32-26:0;
+    AK7.armR.setAttribute("transform","rotate("+wv+" 273 262)");
+  }else{dots(DOTS7,t,false)}
+};
+window.SEEK_READY=true;
+seek(0);
+</script>
+</body>
+</html>
