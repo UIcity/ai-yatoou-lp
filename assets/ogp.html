@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<!-- OGP画像の生成元。assets/ogp.png (1200x630) を再生成する場合:
+     chrome --headless --screenshot=ogp.png --window-size=1200,630 この
+ファイル -->
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  width:1200px;height:630px;overflow:hidden;position:relative;
+  font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
+  background:
+    radial-gradient(90% 120% at 85% 110%, rgba(230,0,39,.38), transparent 60%),
+    radial-gradient(70% 90% at -5% -10%, rgba(230,0,39,.16), transparent 55%),
+    linear-gradient(160deg, #101016 0%, #0A0A0E 60%, #08080C 100%);
+  color:#fff;display:flex;flex-direction:column;justify-content:center;padding:0 96px;
+}
+.badge{
+  display:inline-flex;width:fit-content;align-items:center;gap:14px;
+  border:2px solid #FF4D63;color:#FF6B7E;border-radius:999px;
+  font-size:24px;font-weight:700;letter-spacing:.2em;padding:12px 34px;margin-bottom:44px;
+}
+h1{font-size:128px;font-weight:900;line-height:1.14;letter-spacing:.01em}
+h1 .r{color:#E60027}
+p.sub{font-size:38px;font-weight:700;margin-top:40px;color:rgba(255,255,255,.92)}
+p.small{font-size:26px;margin-top:18px;color:rgba(255,255,255,.6)}
+.grid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+  background-size:60px 60px;pointer-events:none;
+}
+</style>
+</head>
+<body>
+<div class="grid"></div>
+<span class="badge">審査制・無料｜AI社員採用設計</span>
+<h1>AIを<span class="r">、</span>雇おう<span class="r">。</span></h1>
+<p class="sub">御社の仕事に合わせた“本当に必要なAI社員”を無料で設計します。</p>
+<p class="small">運営：ユーアイシティ株式会社（UIcity）</p>
+</body>
+</html>

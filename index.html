@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0A0A0E">
+
+<!-- ================= 差し替え: 公開ドメイン確定後（Br11③=UIcityドメイン配下）、
+     https://ai.uicity.net/ を実URLへ一括置換（canonical / OGP / sitemap.xml / robots.txt） ================= -->
+<title>AIを、雇おう。｜御社専用の「AI社員」を無料で設計 — AI社員採用設計【審査制】</title>
+<meta name="description" content="営業AI・事務AI・問い合わせ対応AI。既製のAIツール選びではなく、御社の実際の業務を分析し「どの仕事をAIに任せるべきか」から設計する、審査制・無料のAI社員採用設計。分析結果は御社専用の設計書としてお渡しします。法人・事業者向け。">
+<link rel="canonical" href="https://ai.uicity.net/">
+
+<!-- OGP -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AIを、雇おう。｜AI社員採用設計">
+<meta property="og:title" content="AIを、雇おう。｜御社専用の「AI社員」を無料で設計">
+<meta property="og:description" content="既製のAIツール選びではなく、御社の実際の業務を分析して「どの仕事をAIに任せるべきか」から設計。審査制・無料のAI社員採用設計。">
+<meta property="og:url" content="https://ai.uicity.net/">
+<meta property="og:image" content="https://ai.uicity.net/assets/ogp.png">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+<!-- ================= GA4（差し替え: 【GA4測定ID】発行後にコメント解除） =================
+<script async src="https://www.googletagmanager.com/gtag/js?id=【GA4測定ID】"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', '【GA4測定ID】');
+</script>
+================================================================================== -->
+
+<!-- フォント: 初回描画はシステムフォント（0バイト）→ Noto Sans JP を非同期で後読み（速度優先） -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet"></noscript>
+
+<!-- 構造化データ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://ai.uicity.net/#org",
+      "name": "ユーアイシティ株式会社",
+      "alternateName": "UIcity",
+      "url": "https://ai.uicity.net/",
+      "slogan": "AIを、雇おう。"
+    },
+    {
+      "@type": "Service",
+      "name": "AI社員採用設計",
+      "serviceType": "AI導入コンサルティング（業務分析・AI活用設計）",
+      "provider": { "@id": "https://ai.uicity.net/#org" },
+      "areaServed": "JP",
+      "audience": { "@type": "BusinessAudience", "name": "法人・事業者" },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY", "description": "審査制・無料。御社の業務を分析し、御社専用のAI社員（AI活用の役割設計）を無料で設計します。" },
+      "description": "既製のAIツール選びではなく、御社の実際の業務を分析し、どの仕事をAIに任せるべきかから設計する審査制・無料のサービス。分析結果は御社専用のAI社員採用設計書としてお渡しします。"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "AIに詳しくなくても申し込めますか？", "acceptedAnswer": { "@type": "Answer", "text": "はい。AIに関する知識は必要ありません。御社の仕事や、現在困っていることを教えてください。AIの種類や実現方法は、こちらで整理します。" } },
+        { "@type": "Question", "name": "どの業種でも申し込めますか？", "acceptedAnswer": { "@type": "Answer", "text": "法人・事業者であればお申し込みいただけます。ただし、業務内容や必要な情報によって、採用設計をお受けできない場合があります。" } },
+        { "@type": "Question", "name": "申し込めば必ずAI社員を提案されますか？", "acceptedAnswer": { "@type": "Answer", "text": "いいえ。分析の結果、AIを使わない方がよい場合は、AI社員の採用をおすすめしません。" } },
+        { "@type": "Question", "name": "必ず有料サービスを契約する必要がありますか？", "acceptedAnswer": { "@type": "Answer", "text": "いいえ。設計結果をご確認いただき、実際にAI社員をつくりたい場合のみ、有料サービスをご検討ください。" } },
+        { "@type": "Question", "name": "業務資料を提出しなければいけませんか？", "acceptedAnswer": { "@type": "Answer", "text": "正確な設計を行うため、可能な範囲でご提出をお願いしています。個人情報や機密情報は、見えない状態にしていただいて構いません。" } },
+        { "@type": "Question", "name": "完全に自動で仕事をするAI社員をつくれますか？", "acceptedAnswer": { "@type": "Answer", "text": "仕事内容によって異なります。人の補助をする形、人の確認後に処理する形、一定の範囲で自動処理する形など、安全性を考慮して設計します。" } },
+        { "@type": "Question", "name": "現在使用しているシステムを変更する必要がありますか？", "acceptedAnswer": { "@type": "Answer", "text": "必ずしも変更する必要はありません。現在のシステムを活用できるか、新しいツールが必要かも含めて確認します。" } },
+        { "@type": "Question", "name": "結果だけ受け取って、自社で導入してもよいですか？", "acceptedAnswer": { "@type": "Answer", "text": "はい。ただし、無料でお渡しするのは採用方針と大まかな設計です。詳細な指示内容、システム設定、連携方法などは含まれません。" } }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+/* ============================================================
+   AIを、雇おう。 — AI社員採用設計 LP
+   ブランド: 黒×赤（A2-3/Br5: 力強い・都会的）
+   方針: 外部依存ゼロ・1ファイル・初回描画はシステムフォント
+   ============================================================ */
+:root{
+  --ink:#111116;          /* 本文の黒 */
+  --black:#0A0A0E;        /* ブランド黒（背景） */
+  --black-2:#131318;
+  --paper:#FFFFFF;
+  --paper-2:#F6F6F4;
+  --red:#E60027;          /* ブランド赤 */
+  --red-dark:#C4001F;
+  --red-soft:#FFF0F2;
+  --muted:#585860;
+  --muted-on-dark:rgba(255,255,255,.72);
+  --line:#E6E6E3;
+  --line-dark:rgba(255,255,255,.12);
+  --radius:14px;
+  --shadow:0 10px 40px rgba(10,10,14,.08);
+  --font:"Noto Sans JP","Hiragino Kaku Gothic ProN","Hiragino Sans","BIZ UDPGothic","Yu Gothic Medium","Yu Gothic",Meiryo,sans-serif;
+  --max:1120px;
+  --max-text:760px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--font);
+  color:var(--ink);
+  background:var(--paper);
+  line-height:2;
+  font-size:16px;
+  letter-spacing:.02em;
+  font-feature-settings:"palt";
+  overflow-x:hidden;
+}
+img,svg{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+ul,ol{list-style:none}
+section{scroll-margin-top:76px;position:relative}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.wrap-text{max-width:var(--max-text);margin:0 auto;padding:0 24px}
+
+/* ---------- タイポグラフィ ---------- */
+.kicker{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:12px;font-weight:700;letter-spacing:.28em;color:var(--red);
+  text-transform:uppercase;margin-bottom:18px;
+}
+.kicker::before{content:"";width:26px;height:2px;background:var(--red)}
+.h2{
+  font-size:clamp(25px,4.4vw,42px);font-weight:900;line-height:1.55;
+  letter-spacing:.03em;margin-bottom:26px;
+}
+.h3{font-size:clamp(18px,2.6vw,22px);font-weight:700;line-height:1.7;margin-bottom:12px}
+.lead{font-size:clamp(15.5px,1.9vw,17.5px);line-height:2.15;color:var(--ink)}
+.lead + .lead{margin-top:1.2em}
+.muted{color:var(--muted)}
+.accent{color:var(--red)}
+.em-line{
+  font-weight:900;
+  background:linear-gradient(transparent 68%, rgba(230,0,39,.16) 68%);
+  padding:0 .1em;
+}
+.sec{padding:clamp(72px,10vw,130px) 0}
+.sec-alt{background:var(--paper-2)}
+.sec-dark{background:var(--black);color:#F5F5F2}
+.sec-dark .h2{color:#fff}
+.sec-dark .lead{color:var(--muted-on-dark)}
+.below-fold{content-visibility:auto;contain-intrinsic-size:auto 800px}
+
+/* ---------- ヘッダー ---------- */
+.header{
+  position:fixed;inset:0 0 auto 0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 clamp(16px,3vw,32px);height:64px;
+  background:rgba(10,10,14,0);
+  transition:background .35s ease, box-shadow .35s ease;
+}
+.header.is-solid{background:rgba(10,10,14,.92);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(255,255,255,.08)}
+.brand{display:flex;align-items:center;gap:10px;color:#fff;font-weight:900;letter-spacing:.04em}
+.brand-mark{width:30px;height:30px;flex:none}
+.brand-name{font-size:15.5px}
+.brand-name .comma{color:var(--red)}
+.nav{display:flex;align-items:center;gap:26px}
+.nav a{color:rgba(255,255,255,.82);font-size:13.5px;font-weight:500;transition:color .2s}
+.nav a:hover{color:#fff}
+.header-cta{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--red);color:#fff;font-size:13.5px;font-weight:700;
+  padding:10px 18px;border-radius:999px;transition:background .2s, transform .2s;
+}
+.header-cta:hover{background:var(--red-dark);transform:translateY(-1px)}
+@media (max-width:900px){.nav a{display:none}}
+
+/* ---------- ボタン ---------- */
+.btn{
+  position:relative;display:inline-flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 12px;
+  background:var(--red);color:#fff;font-family:var(--font);
+  font-size:clamp(15.5px,2vw,17.5px);font-weight:700;letter-spacing:.04em;
+  padding:20px 42px;border-radius:999px;border:0;cursor:pointer;
+  box-shadow:0 12px 32px rgba(230,0,39,.35);
+  transition:transform .25s cubic-bezier(.2,.7,.3,1.2), box-shadow .25s, background .25s;
+}
+.btn:hover{background:var(--red-dark);transform:translateY(-2px);box-shadow:0 16px 40px rgba(230,0,39,.42)}
+.btn:active{transform:translateY(0)}
+.btn .arrow{transition:transform .25s}
+.btn:hover .arrow{transform:translateX(5px)}
+.btn:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.nb{display:inline-block;white-space:nowrap}
+@media (max-width:480px){.h2 .nb{display:inline;white-space:normal}}
+.cta-note{margin-top:16px;font-size:12.5px;line-height:1.9;color:var(--muted)}
+.sec-dark .cta-note{color:rgba(255,255,255,.55)}
+.badge-free{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1.5px solid var(--red);color:var(--red);
+  font-size:13px;font-weight:700;letter-spacing:.18em;
+  padding:7px 18px;border-radius:999px;margin-bottom:22px;
+}
+.sec-dark .badge-free{border-color:rgba(255,72,96,.85);color:#FF6B7E}
+
+/* ---------- ヒーロー ---------- */
+.hero{
+  position:relative;min-height:100svh;
+  display:flex;align-items:center;
+  background:var(--black);color:#fff;overflow:hidden;
+  padding:120px 0 96px;
+}
+#net{position:absolute;inset:0;width:100%;height:100%;opacity:.55}
+.hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(90% 70% at 50% 20%, transparent 0%, rgba(10,10,14,.55) 78%, rgba(10,10,14,.92) 100%);
+}
+.hero .wrap{position:relative;z-index:2}
+.hero-copy{max-width:820px}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:13px;font-weight:700;letter-spacing:.3em;color:#FF6B7E;margin-bottom:26px;
+}
+.hero-eyebrow::before{content:"";width:34px;height:2px;background:var(--red)}
+.hero-title{
+  font-size:clamp(48px,9.2vw,104px);font-weight:900;line-height:1.18;
+  letter-spacing:.02em;margin-bottom:30px;
+}
+.hero-title .comma,.hero-title .period{color:var(--red)}
+.hero-sub{
+  font-size:clamp(17px,2.5vw,23px);font-weight:700;line-height:1.9;margin-bottom:18px;
+}
+.hero-desc{max-width:640px;font-size:clamp(14.5px,1.8vw,16px);line-height:2.1;color:var(--muted-on-dark);margin-bottom:30px}
+.hero-chip{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,.06);border:1px solid var(--line-dark);
+  border-radius:999px;padding:10px 20px;margin-bottom:38px;
+  font-size:13.5px;color:rgba(255,255,255,.85);
+}
+.hero-chip .dot{width:7px;height:7px;border-radius:50%;background:var(--red);flex:none;animation:pulse 2s infinite}
+#rotator{display:inline-block;min-width:1em;font-weight:700;transition:opacity .4s, transform .4s}
+#rotator.out{opacity:0;transform:translateY(8px)}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(230,0,39,.5)}55%{box-shadow:0 0 0 7px rgba(230,0,39,0)}}
+.hero-notes{margin-top:18px;font-size:12px;line-height:1.9;color:rgba(255,255,255,.5)}
+.scroll-cue{
+  position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:2;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  font-size:10.5px;letter-spacing:.3em;color:rgba(255,255,255,.5);
+}
+.scroll-cue::after{
+  content:"";width:1.5px;height:44px;
+  background:linear-gradient(var(--red), transparent);
+  animation:cue 1.8s ease-in-out infinite;
+}
+@keyframes cue{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@media (max-height:840px){.scroll-cue{display:none}}
+
+/* ---------- スクロール出現 ---------- */
+.reveal{transition:opacity .9s cubic-bezier(.2,.65,.3,1), transform .9s cubic-bezier(.2,.65,.3,1)}
+.js .reveal{opacity:0;transform:translateY(28px)}
+.js .reveal.on{opacity:1;transform:none}
+.js .reveal[data-d="1"]{transition-delay:.08s}
+.js .reveal[data-d="2"]{transition-delay:.16s}
+.js .reveal[data-d="3"]{transition-delay:.24s}
+.js .reveal[data-d="4"]{transition-delay:.32s}
+.js .reveal[data-d="5"]{transition-delay:.4s}
+
+/* ---------- 課題（声）カード ---------- */
+.voices{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;margin:44px 0}
+.voice{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px 24px;font-size:15px;line-height:1.9;font-weight:500;
+  box-shadow:var(--shadow);position:relative;
+}
+.voice::before{
+  content:"“";position:absolute;top:6px;left:14px;
+  font-size:44px;font-weight:900;color:rgba(230,0,39,.18);line-height:1;
+}
+.voice p{padding-left:26px}
+
+/* ---------- 強調ブロック（黒帯） ---------- */
+.statement{
+  background:var(--black);color:#fff;border-radius:calc(var(--radius) + 6px);
+  padding:clamp(36px,6vw,64px);text-align:center;margin-top:56px;
+  position:relative;overflow:hidden;
+}
+.statement::before{
+  content:"";position:absolute;inset:auto -60px -120px auto;width:320px;height:320px;
+  background:radial-gradient(circle, rgba(230,0,39,.35), transparent 65%);
+}
+.statement p{position:relative}
+.statement .s1{font-size:clamp(16px,2.4vw,20px);font-weight:500;color:rgba(255,255,255,.8);margin-bottom:10px}
+.statement .s2{font-size:clamp(21px,3.4vw,32px);font-weight:900;line-height:1.7}
+.statement .s2 .accent{color:#FF4D63}
+
+/* ---------- 仕事の5分類 ---------- */
+.check-list{display:grid;gap:12px;margin:34px 0}
+.check-list li{
+  display:flex;gap:14px;align-items:flex-start;
+  font-size:15.5px;font-weight:500;line-height:1.9;
+}
+.check-list .ico{flex:none;width:26px;height:26px;margin-top:5px}
+.sort-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:40px 0 30px}
+.sort-card{
+  border:1px solid var(--line);border-radius:var(--radius);background:var(--paper);
+  padding:24px 18px 20px;text-align:center;box-shadow:var(--shadow);
+  transition:transform .3s, box-shadow .3s;
+}
+.sort-card:hover{transform:translateY(-4px);box-shadow:0 16px 44px rgba(10,10,14,.12)}
+.sort-card .ico{width:40px;height:40px;margin:0 auto 14px}
+.sort-card h4{font-size:15px;font-weight:700;line-height:1.7}
+.sort-card p{font-size:12.5px;color:var(--muted);line-height:1.8;margin-top:6px}
+.sort-card.is-ai{border:2px solid var(--red);background:var(--red-soft)}
+.sort-card.is-ai h4{color:var(--red)}
+
+/* ---------- 事例カード ---------- */
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:44px 0 34px}
+.case-card{
+  background:#fff;border-radius:var(--radius);border:1px solid var(--line);
+  padding:28px 26px;box-shadow:var(--shadow);
+}
+.case-card .tag{
+  display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.14em;
+  color:var(--red);border:1px solid rgba(230,0,39,.4);border-radius:999px;
+  padding:3px 12px;margin-bottom:16px;
+}
+.case-card p{font-size:14px;color:var(--muted);line-height:1.9}
+.case-card .role{font-size:16.5px;font-weight:900;line-height:1.8;margin-bottom:8px;color:var(--ink)}
+.case-card .role em{font-style:normal;background:linear-gradient(transparent 70%, rgba(230,0,39,.18) 70%)}
+.chip-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px;margin:30px 0}
+.chip{
+  display:flex;align-items:center;gap:12px;
+  background:var(--paper);border:1px solid var(--line);border-radius:12px;
+  padding:14px 18px;font-size:14px;font-weight:500;line-height:1.7;
+  transition:border-color .25s, transform .25s;
+}
+.chip:hover{border-color:var(--red);transform:translateX(4px)}
+.chip .ico{flex:none;width:30px;height:30px}
+
+/* ---------- 正直セクション（代替手段） ---------- */
+.alt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin:36px 0}
+.alt-item{
+  display:flex;align-items:flex-start;gap:12px;
+  background:var(--paper-2);border-radius:10px;padding:14px 16px;
+  font-size:14px;font-weight:500;line-height:1.8;
+}
+.alt-item .n{flex:none;font-size:11px;font-weight:700;color:var(--red);letter-spacing:.05em;margin-top:5px}
+
+/* ---------- 分かること 7項目 ---------- */
+.insight-list{display:grid;gap:14px;margin-top:44px}
+.insight{
+  display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:flex-start;
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px 28px;box-shadow:var(--shadow);
+}
+.insight .num{
+  font-size:30px;font-weight:900;color:var(--red);line-height:1;
+  font-variant-numeric:tabular-nums;min-width:44px;padding-top:4px;
+}
+.insight h4{font-size:17px;font-weight:900;margin-bottom:6px;line-height:1.7}
+.insight p{font-size:14.5px;color:var(--muted);line-height:1.95}
+@media (max-width:560px){.insight{grid-template-columns:1fr;gap:8px}.insight .num{min-width:0}}
+
+/* ---------- 資料チップ ---------- */
+.doc-cloud{display:flex;flex-wrap:wrap;gap:9px;margin:32px 0}
+.doc-cloud li{
+  font-size:13.5px;font-weight:500;
+  border:1px solid var(--line-dark);border-radius:999px;
+  padding:8px 18px;color:rgba(255,255,255,.85);
+  background:rgba(255,255,255,.05);
+}
+
+/* ---------- 設計書 ---------- */
+.report-layout{display:grid;grid-template-columns:minmax(280px,420px) 1fr;gap:clamp(28px,5vw,64px);align-items:start;margin-top:48px}
+@media (max-width:880px){.report-layout{grid-template-columns:1fr}}
+.report-visual{position:sticky;top:96px}
+@media (max-width:880px){.report-visual{position:static;max-width:380px;margin:0 auto}}
+.report-list{display:grid;gap:0}
+.report-item{
+  padding:18px 4px 18px 0;border-bottom:1px solid var(--line);
+  display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:flex-start;
+}
+.report-item:first-child{border-top:1px solid var(--line)}
+.report-item .ico{flex:none;width:24px;height:24px;margin-top:6px}
+.report-item h4{font-size:15.5px;font-weight:700;line-height:1.7}
+.report-item p{font-size:13.5px;color:var(--muted);line-height:1.85;margin-top:2px}
+
+/* ---------- 効果試算 ---------- */
+.calc-card{
+  background:var(--black-2);border:1px solid var(--line-dark);border-radius:calc(var(--radius) + 4px);
+  padding:clamp(28px,4.5vw,48px);margin:44px 0 26px;
+}
+.calc-flow{display:flex;flex-wrap:wrap;align-items:center;gap:14px;justify-content:center;margin-bottom:38px;text-align:center}
+.calc-step{background:rgba(255,255,255,.05);border:1px solid var(--line-dark);border-radius:12px;padding:16px 22px;min-width:150px}
+.calc-step .lbl{font-size:11.5px;letter-spacing:.14em;color:rgba(255,255,255,.55);margin-bottom:4px}
+.calc-step .val{font-size:20px;font-weight:900;color:#fff}
+.calc-step .val small{font-size:12px;font-weight:500;color:rgba(255,255,255,.6)}
+.calc-arrow{color:var(--red);font-size:20px;font-weight:900}
+.bars{display:grid;gap:22px;max-width:640px;margin:0 auto}
+.bar-row .bar-label{display:flex;justify-content:space-between;font-size:13.5px;margin-bottom:8px;color:rgba(255,255,255,.8)}
+.bar-row .bar-label b{font-size:17px;color:#fff;font-variant-numeric:tabular-nums}
+.bar-track{height:18px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden}
+.bar-fill{height:100%;border-radius:999px;width:0;transition:width 1.6s cubic-bezier(.2,.7,.2,1)}
+.bar-fill.now{background:linear-gradient(90deg,#6E6E78,#9B9BA4)}
+.bar-fill.after{background:linear-gradient(90deg,var(--red),#FF5A6E)}
+.scenarios{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:34px 0}
+.scenario{
+  border:1px solid var(--line-dark);border-radius:var(--radius);
+  padding:22px;background:rgba(255,255,255,.04);text-align:center;
+}
+.scenario .lv{display:inline-flex;gap:4px;margin-bottom:12px}
+.scenario .lv i{width:16px;height:5px;border-radius:3px;background:rgba(255,255,255,.18)}
+.scenario .lv i.on{background:var(--red)}
+.scenario h4{font-size:15.5px;font-weight:700;color:#fff}
+.scenario p{font-size:12.5px;color:rgba(255,255,255,.6);line-height:1.8;margin-top:6px}
+@media (max-width:600px){
+  .calc-flow{flex-direction:column}
+  .calc-flow .calc-arrow:last-of-type{transform:rotate(90deg)}
+  .calc-step{min-width:200px}
+}
+
+/* ---------- 働き方3型 ---------- */
+.modes{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin:44px 0 30px}
+.mode{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:30px 26px;box-shadow:var(--shadow);
+}
+.mode .meter{display:flex;gap:5px;margin-bottom:18px}
+.mode .meter i{height:7px;flex:1;border-radius:4px;background:var(--line)}
+.mode .meter i.on{background:var(--red)}
+.mode h4{font-size:18px;font-weight:900;margin-bottom:4px}
+.mode .en{font-size:11px;letter-spacing:.22em;color:var(--muted);margin-bottom:14px}
+.mode p{font-size:14.5px;color:var(--muted);line-height:1.95}
+
+/* ---------- フロー ---------- */
+.flow{position:relative;margin-top:52px;display:grid;gap:0}
+.flow-item{
+  position:relative;display:grid;grid-template-columns:64px 1fr;gap:22px;
+  padding-bottom:40px;
+}
+.flow-item::before{
+  content:"";position:absolute;left:31px;top:64px;bottom:0;width:2px;
+  background:var(--line);
+}
+.flow-item:last-child::before{display:none}
+.flow-num{
+  width:64px;height:64px;border-radius:50%;flex:none;
+  background:var(--black);color:#fff;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-weight:900;line-height:1;z-index:1;
+}
+.flow-num .s{font-size:8.5px;letter-spacing:.18em;color:#FF6B7E;margin-bottom:3px}
+.flow-num .n{font-size:22px}
+.flow-body{padding-top:8px}
+.flow-body h4{font-size:18px;font-weight:900;margin-bottom:6px}
+.flow-body p{font-size:14.5px;color:var(--muted);line-height:1.95;max-width:560px}
+
+/* ---------- 無料/有料 ---------- */
+.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:48px}
+@media (max-width:800px){.price-grid{grid-template-columns:1fr}}
+.price-card{border-radius:calc(var(--radius) + 4px);padding:clamp(26px,4vw,40px);border:1px solid var(--line);background:#fff;box-shadow:var(--shadow)}
+.price-card.free{border:2px solid var(--red);position:relative;overflow:hidden}
+.price-card.free::before{
+  content:"FREE";position:absolute;top:18px;right:-34px;transform:rotate(45deg);
+  background:var(--red);color:#fff;font-size:11px;font-weight:900;letter-spacing:.22em;
+  padding:5px 42px;
+}
+.price-card h3{font-size:20px;font-weight:900;margin-bottom:4px}
+.price-card .sub{font-size:13px;color:var(--muted);margin-bottom:22px}
+.price-card ul{display:grid;gap:8px}
+.price-card li{
+  display:flex;gap:10px;align-items:flex-start;font-size:14px;font-weight:500;line-height:1.75;
+}
+.price-card li .ico{flex:none;width:20px;height:20px;margin-top:4px}
+.price-bridge{
+  text-align:center;margin-top:34px;font-size:clamp(15.5px,2.2vw,19px);font-weight:900;line-height:2;
+}
+
+/* ---------- おすすめ企業 ---------- */
+.fit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:10px;margin-top:44px}
+.fit-item{
+  display:flex;gap:12px;align-items:flex-start;
+  background:#fff;border:1px solid var(--line);border-radius:12px;
+  padding:16px 18px;font-size:14.5px;font-weight:500;line-height:1.8;
+}
+.fit-item .ico{flex:none;width:22px;height:22px;margin-top:4px}
+
+/* ---------- FAQ ---------- */
+.faq-list{margin-top:44px;display:grid;gap:12px}
+.faq-item{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;box-shadow:var(--shadow);
+}
+.faq-item summary{
+  list-style:none;cursor:pointer;display:flex;gap:16px;align-items:flex-start;
+  padding:22px 24px;font-size:15.5px;font-weight:700;line-height:1.8;
+}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary .q{flex:none;color:var(--red);font-weight:900}
+.faq-item summary .plus{
+  margin-left:auto;flex:none;width:22px;height:22px;position:relative;top:5px;
+}
+.faq-item summary .plus::before,.faq-item summary .plus::after{
+  content:"";position:absolute;background:var(--red);inset:0;margin:auto;
+  transition:transform .3s;
+}
+.faq-item summary .plus::before{width:14px;height:2px}
+.faq-item summary .plus::after{width:2px;height:14px}
+.faq-item[open] summary .plus::after{transform:rotate(90deg)}
+.faq-a{padding:0 24px 24px 56px;font-size:14.5px;color:var(--muted);line-height:2}
+@media (max-width:560px){.faq-a{padding-left:24px}}
+
+/* ---------- クロージング ---------- */
+.closing{
+  position:relative;overflow:hidden;text-align:center;
+}
+.closing::before{
+  content:"";position:absolute;inset:auto 50% -260px;transform:translateX(50%);
+  width:720px;height:520px;
+  background:radial-gradient(ellipse, rgba(230,0,39,.28), transparent 65%);
+}
+.closing .wrap-text{position:relative}
+.closing-slogan{
+  font-size:clamp(40px,7.5vw,80px);font-weight:900;letter-spacing:.02em;
+  line-height:1.3;margin:38px 0 22px;color:#fff;
+}
+.closing-slogan .comma,.closing-slogan .period{color:var(--red)}
+
+/* ---------- フォーム ---------- */
+.entry-box{
+  max-width:680px;margin:52px auto 0;
+  background:#fff;border-radius:calc(var(--radius) + 6px);
+  border:1px solid var(--line);box-shadow:0 24px 70px rgba(10,10,14,.12);
+  padding:clamp(28px,4.5vw,48px);
+}
+.field{margin-bottom:22px}
+.field label{display:block;font-size:14px;font-weight:700;margin-bottom:8px}
+.field .req{color:var(--red);font-size:11px;font-weight:700;border:1px solid currentColor;border-radius:4px;padding:1px 6px;margin-left:8px;vertical-align:2px}
+.field .opt{color:var(--muted);font-size:11px;font-weight:700;border:1px solid var(--line);border-radius:4px;padding:1px 6px;margin-left:8px;vertical-align:2px}
+.field input,.field textarea,.field select{
+  width:100%;font-family:var(--font);font-size:16px;line-height:1.6;
+  padding:14px 16px;border:1.5px solid var(--line);border-radius:10px;
+  background:var(--paper-2);transition:border-color .2s, background .2s;color:var(--ink);
+}
+.field input:focus,.field textarea:focus,.field select:focus{
+  outline:none;border-color:var(--red);background:#fff;
+}
+.field textarea{min-height:130px;resize:vertical}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--muted);line-height:1.8;margin:26px 0}
+.consent input{width:18px;height:18px;margin-top:5px;accent-color:var(--red);flex:none}
+.form-msg{display:none;margin-top:18px;padding:16px 18px;border-radius:10px;font-size:14px;line-height:1.8}
+.form-msg.ok{display:block;background:#F0FAF3;border:1px solid #BFE8CC;color:#1F7A3D}
+.form-msg.ng{display:block;background:var(--red-soft);border:1px solid #F5C2CB;color:var(--red-dark)}
+
+/* ---------- モバイル固定CTA ---------- */
+.float-cta{
+  position:fixed;left:12px;right:12px;bottom:12px;z-index:99;
+  display:none;
+}
+.float-cta a{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  background:var(--red);color:#fff;font-weight:900;font-size:15px;
+  border-radius:999px;padding:16px 20px;
+  box-shadow:0 14px 36px rgba(230,0,39,.4);
+}
+.js .float-cta.show{display:block;animation:rise .45s cubic-bezier(.2,.7,.3,1.2)}
+@keyframes rise{from{transform:translateY(80px);opacity:0}to{transform:none;opacity:1}}
+@media (min-width:901px){.js .float-cta.show{display:none}}
+
+/* ---------- フッター ---------- */
+.footer{background:var(--black);color:rgba(255,255,255,.6);padding:56px 0 40px;font-size:12.5px;line-height:2}
+.footer .brand{margin-bottom:18px}
+.footer a{text-decoration:underline;text-underline-offset:3px}
+.footer a:hover{color:#fff}
+.footer-notes{margin:14px 0 26px;max-width:640px}
+.footer-copy{border-top:1px solid var(--line-dark);padding-top:22px;font-size:11.5px;color:rgba(255,255,255,.4)}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .reveal{opacity:1;transform:none;transition:none}
+  #net,.scroll-cue{display:none}
+  .bar-fill{transition:none}
+  *{animation:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= ヘッダー ================= -->
+<header class="header" id="header">
+  <a class="brand" href="#top" aria-label="AIを、雇おう。トップへ">
+    <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#E60027"/><text x="32" y="43" font-family="Arial, sans-serif" font-size="28" font-weight="900" fill="#fff" text-anchor="middle">AI</text></svg>
+    <span class="brand-name">AIを<span class="comma">、</span>雇おう<span class="comma">。</span></span>
+  </a>
+  <nav class="nav" aria-label="ページ内メニュー">
+    <a href="#problem">よくある悩み</a>
+    <a href="#approach">設計の考え方</a>
+    <a href="#insights">分かること</a>
+    <a href="#flow">流れ</a>
+    <a href="#free">無料の範囲</a>
+    <a href="#faq">FAQ</a>
+    <a class="header-cta" href="#entry">無料で申し込む<span aria-hidden="true">→</span></a>
+  </nav>
+</header>
+
+<main>
+
+<!-- ================= ヒーロー ================= -->
+<section class="hero" id="top">
+  <canvas id="net" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="hero-copy">
+      <p class="hero-eyebrow">審査制・無料｜AI社員採用設計</p>
+      <h1 class="hero-title">AIを<span class="comma">、</span><br>雇おう<span class="period">。</span></h1>
+      <p class="hero-sub">御社の仕事に合わせた“本当に必要なAI社員”を<br>無料で設計します。</p>
+      <p class="hero-chip"><span class="dot" aria-hidden="true"></span><span>たとえば ─ <span id="rotator">商談後の追客漏れを防ぐAI社員</span></span></p>
+      <div class="hero-desc">
+        <p>営業AI、事務AI、問い合わせ対応AI。あらかじめ用意された職種の中から、近いものをおすすめするだけではありません。御社の事業内容や実際の仕事を確認し、一社ごとに分析。その結果をもとに、御社のためだけのAI社員を設計します。</p>
+      </div>
+      <a class="btn" href="#entry"><span class="nb">御社専用のAI社員を</span><span class="nb">無料で設計する</span><span class="arrow" aria-hidden="true">→</span></a>
+      <p class="hero-notes">※法人・事業者向けのサービスです。<br>※AI社員はサービス上の呼称であり、法的な雇用関係にある従業員を意味するものではありません。</p>
+    </div>
+  </div>
+  <p class="scroll-cue" aria-hidden="true">SCROLL</p>
+</section>
+
+<!-- ================= 分析の4視点（ヒーロー直下） ================= -->
+<section class="sec sec-alt" id="analysis">
+  <div class="wrap-text">
+    <p class="kicker reveal">ANALYSIS</p>
+    <h2 class="h2 reveal"><span class="nb">御社の事業内容や実際の仕事を</span><span class="nb">確認し、一社ごとに分析します。</span></h2>
+    <ul class="check-list">
+      <li class="reveal" data-d="1"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg><span>どの仕事に<b>時間がかかっている</b>のか</span></li>
+      <li class="reveal" data-d="2"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 17H3z"/><path d="M12 10v4"/><path d="M12 17.5v.1"/></svg><span>どこで<b>ミスや対応漏れ</b>が起きているのか</span></li>
+      <li class="reveal" data-d="3"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg><span>どの仕事をAIに任せると<b>効果が大きい</b>のか</span></li>
+      <li class="reveal" data-d="4"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>どの仕事は<b>人が続けるべき</b>なのか</span></li>
+    </ul>
+    <p class="lead reveal">その結果をもとに、<span class="em-line">御社のためだけのAI社員</span>を設計します。</p>
+  </div>
+</section>
+
+<!-- ================= 課題 ================= -->
+<section class="sec below-fold" id="problem">
+  <div class="wrap">
+    <div class="wrap-text" style="padding:0">
+      <p class="kicker reveal">ISSUE</p>
+      <h2 class="h2 reveal">AIを導入したい。<br>でも、<span class="accent">何を任せればいいのか</span>分からない。</h2>
+      <p class="lead reveal">生成AIの情報は、世の中にあふれています。ChatGPTの使い方。便利なAIツール。仕事を効率化するプロンプト。</p>
+      <p class="lead reveal">しかし、実際に会社へ導入しようとすると、多くの企業が同じところで止まります。</p>
+    </div>
+    <div class="voices">
+      <div class="voice reveal"><p>自社では、何に使えばいいのか分からない</p></div>
+      <div class="voice reveal" data-d="1"><p>使っている社員と、使っていない社員がいる</p></div>
+      <div class="voice reveal" data-d="2"><p>便利そうだが、どれほど効果があるのか分からない</p></div>
+      <div class="voice reveal" data-d="3"><p>AIを入れて、逆に仕事が増えないか不安</p></div>
+      <div class="voice reveal" data-d="4"><p>顧客情報や社内情報を扱っても大丈夫なのか</p></div>
+      <div class="voice reveal" data-d="5"><p>システム会社に相談する前に、何を作るべきか整理したい</p></div>
+    </div>
+    <div class="wrap-text" style="padding:0">
+      <p class="lead reveal">その状態でAIツールを契約しても、会社の戦力にはなりません。</p>
+    </div>
+    <div class="statement reveal">
+      <p class="s1">大切なのは、AIを入れることではありません。</p>
+      <p class="s2">AIに、<span class="accent">どの仕事を任せるか</span>を決めることです。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= アプローチ ================= -->
+<section class="sec sec-alt below-fold" id="approach">
+  <div class="wrap">
+    <div class="wrap-text" style="padding:0">
+      <p class="kicker reveal">APPROACH</p>
+      <h2 class="h2 reveal">私たちが先に決めるのは、<br><span class="accent">AIの種類ではありません。</span></h2>
+      <p class="lead reveal">最初から「営業AIを入れましょう」「事務AIがおすすめです」とは決めません。まず確認するのは、御社の仕事です。</p>
+      <ul class="check-list">
+        <li class="reveal" data-d="1"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg><span>誰が、どの仕事をしているのか。</span></li>
+        <li class="reveal" data-d="2"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg><span>どこに時間がかかっているのか。</span></li>
+        <li class="reveal" data-d="3"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg><span>どの場面でミスや対応漏れが起きるのか。</span></li>
+        <li class="reveal" data-d="4"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg><span>何を見て、どのように判断しているのか。</span></li>
+      </ul>
+      <p class="lead reveal">仕事を一つずつ整理し、次の5つに分けていきます。</p>
+    </div>
+    <div class="sort-grid">
+      <div class="sort-card is-ai reveal"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="6" width="16" height="12" rx="3"/><circle cx="9.5" cy="12" r="1.4" fill="#E60027" stroke="none"/><circle cx="14.5" cy="12" r="1.4" fill="#E60027" stroke="none"/><path d="M12 6V3"/><path d="M9 21h6"/></svg><h4>AIに任せる仕事</h4></div>
+      <div class="sort-card reveal" data-d="1"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#111116" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg><h4>人が判断する仕事</h4></div>
+      <div class="sort-card reveal" data-d="2"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#111116" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.8v3M12 18.2v3M2.8 12h3M18.2 12h3M5.5 5.5l2.1 2.1M16.4 16.4l2.1 2.1M18.5 5.5l-2.1 2.1M7.6 16.4l-2.1 2.1"/></svg><h4>システムで自動処理する仕事</h4></div>
+      <div class="sort-card reveal" data-d="3"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#111116" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 1 0 3-6.2"/><path d="M4 4v4h4"/></svg><h4>今のやり方を続ける仕事</h4></div>
+      <div class="sort-card reveal" data-d="4"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#111116" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 7h14"/><path d="M9 7V5h6v2"/><path d="M7 7l1 13h8l1-13"/></svg><h4>なくしても問題のない仕事</h4></div>
+    </div>
+    <div class="wrap-text" style="padding:0">
+      <p class="lead reveal">必要な仕事を整理した結果として、<span class="em-line">御社に必要なAI社員の役割</span>を設計します。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 事例 ================= -->
+<section class="sec below-fold" id="cases">
+  <div class="wrap">
+    <div class="wrap-text" style="padding:0">
+      <p class="kicker reveal">CASE</p>
+      <h2 class="h2 reveal">同じ業種でも、<br>必要なAI社員は<span class="accent">違います。</span></h2>
+      <p class="lead reveal">たとえば、同じ不動産会社でも、抱えている課題は会社ごとに異なります。</p>
+    </div>
+    <div class="case-grid">
+      <div class="case-card reveal">
+        <span class="tag">不動産会社 A社</span>
+        <p class="role"><em>お問い合わせへの初回返信を早める</em>AI社員が必要かもしれません。</p>
+      </div>
+      <div class="case-card reveal" data-d="1">
+        <span class="tag">不動産会社 B社</span>
+        <p class="role"><em>契約前の提出書類不足を見つける</em>AI社員が必要かもしれません。</p>
+      </div>
+      <div class="case-card reveal" data-d="2">
+        <span class="tag">不動産会社 C社</span>
+        <p class="role"><em>動きが止まっている営業案件を見つける</em>AI社員が必要かもしれません。</p>
+      </div>
+    </div>
+    <div class="wrap-text" style="padding:0">
+      <p class="lead reveal">ほかにも、実際の仕事に合わせて、次のようなAI社員が考えられます。</p>
+    </div>
+    <ul class="chip-grid">
+      <li class="chip reveal"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 1 1-4-7.2"/><path d="M21 4l-9 9-2.5-2.5"/></svg>商談後の追客漏れを防ぐAI社員</li>
+      <li class="chip reveal" data-d="1"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M7 15l3-3 2 2 5-5"/></svg>入金予定と未入金案件を確認するAI社員</li>
+      <li class="chip reveal" data-d="2"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>失注した顧客から再提案先を見つけるAI社員</li>
+      <li class="chip reveal" data-d="3"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M12 8v4l2.5 2.5"/><path d="M17 3l4 4-4 0z" fill="#E60027" stroke="none"/></svg>新入社員からの質問に答えるAI社員</li>
+      <li class="chip reveal"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 17H3z"/><path d="M12 10v4"/><path d="M12 17.5v.1"/></svg>緊急度の高い問い合わせを見つけるAI社員</li>
+      <li class="chip reveal" data-d="1"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="17" rx="3"/><path d="M8 9h8M8 13h8M8 17h5"/></svg>会議内容から担当者と期限を整理するAI社員</li>
+      <li class="chip reveal" data-d="2"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V9l8-6 8 6v11"/><path d="M9 20v-6h6v6"/></svg>営業報告から管理者向けの報告を作るAI社員</li>
+      <li class="chip reveal" data-d="3"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5a2 2 0 0 1 2-2h13v18H6a2 2 0 0 1-2-2z"/><path d="M9 7h7M9 11h7"/></svg>社内資料から必要な情報を探して回答するAI社員</li>
+    </ul>
+    <div class="wrap-text" style="padding:0">
+      <p class="lead reveal">これは、用意された職種一覧ではありません。<br><span class="em-line">御社の実際の仕事を分析した結果として設計される、AI社員の一例</span>です。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 正直さ ================= -->
+<section class="sec sec-alt below-fold" id="honest">
+  <div class="wrap-text">
+    <p class="kicker reveal">HONESTY</p>
+    <h2 class="h2 reveal">AIを雇わない方がよい場合は、<br><span class="accent">そうお伝えします。</span></h2>
+    <p class="lead reveal">すべての課題を、AIで解決できるわけではありません。仕事によっては、AIを導入するよりも、次のような方法の方が、安く、早く解決できることがあります。</p>
+    <ul class="alt-grid">
+      <li class="alt-item reveal"><span class="n">01</span>現在のシステム設定を変える</li>
+      <li class="alt-item reveal" data-d="1"><span class="n">02</span>入力フォームを分かりやすくする</li>
+      <li class="alt-item reveal" data-d="2"><span class="n">03</span>社内ルールを統一する</li>
+      <li class="alt-item reveal" data-d="3"><span class="n">04</span>マニュアルを整える</li>
+      <li class="alt-item reveal"><span class="n">05</span>通知やリマインドを追加する</li>
+      <li class="alt-item reveal" data-d="1"><span class="n">06</span>不要な作業をやめる</li>
+      <li class="alt-item reveal" data-d="2"><span class="n">07</span>人を採用する</li>
+      <li class="alt-item reveal" data-d="3"><span class="n">08</span>外部へ業務を委託する</li>
+    </ul>
+    <p class="lead reveal">私たちは、AIを販売することを前提に設計しません。調査の結果、現時点ではAI社員を雇わない方がよい場合は、無理に導入をおすすめしません。</p>
+    <div class="statement reveal">
+      <p class="s1">目的は、AIを導入することではなく、</p>
+      <p class="s2"><span class="accent">御社の課題を解決すること</span>です。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 分かること ================= -->
+<section class="sec below-fold" id="insights">
+  <div class="wrap">
+    <div class="wrap-text" style="padding:0">
+      <p class="kicker reveal">INSIGHT</p>
+      <h2 class="h2 reveal">AI社員採用設計で<span class="accent">分かること</span></h2>
+    </div>
+    <div class="insight-list">
+      <div class="insight reveal"><span class="num">1</span><div><h4>御社はAI社員を雇うべきか</h4><p>現在の課題や業務内容を確認し、AIを導入する価値があるかを判断します。AIではなく、別の方法が適している場合も、その理由とともにお伝えします。</p></div></div>
+      <div class="insight reveal"><span class="num">2</span><div><h4>どの仕事をAIに任せるべきか</h4><p>仕事を細かい工程に分け、AI、人、現在のシステムが担当する範囲を整理します。業務全体を無理にAIへ任せることはありません。</p></div></div>
+      <div class="insight reveal"><span class="num">3</span><div><h4>御社には、どのようなAI社員が必要か</h4><p>御社の課題から、専用のAI社員候補を設計します。一般的な職種名を当てはめるのではなく、担当する仕事が分かる形でご提案します。</p></div></div>
+      <div class="insight reveal"><span class="num">4</span><div><h4>最初に雇うべきAI社員は誰か</h4><p>複数の候補を、効果、導入のしやすさ、費用、安全性などから比較します。そのうえで、最初に雇うべきAI社員を一名選びます。</p></div></div>
+      <div class="insight reveal"><span class="num">5</span><div><h4>どこまでAIに任せられるか</h4><p>AIが補助だけを行うのか、人の確認後に処理するのか、一定の条件内で自動処理できるのかを明確にします。</p></div></div>
+      <div class="insight reveal"><span class="num">6</span><div><h4>どれほどの効果が期待できるか</h4><p>現在の処理件数や作業時間をもとに、削減できる時間や改善の可能性を試算します。根拠のない数字で、大きな効果を約束することはありません。</p></div></div>
+      <div class="insight reveal"><span class="num">7</span><div><h4>実現するには何が必要か</h4><p>必要な資料、データ、システム、社内体制などを整理します。導入前に準備すべきことも明確になります。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 診断ではなく採用設計 ================= -->
+<section class="sec sec-dark below-fold" id="method">
+  <div class="wrap-text">
+    <p class="kicker reveal">METHOD</p>
+    <h2 class="h2 reveal">診断ではなく、<br>「<span style="color:#FF4D63">AI社員の採用設計</span>」です。</h2>
+    <p class="lead reveal">よくある簡易診断のように、数問の質問だけで結果を出すものではありません。御社の回答内容に合わせて確認する項目を変え、必要に応じて実際の業務資料も確認します。たとえば、次のような資料です。</p>
+    <ul class="doc-cloud reveal">
+      <li>業務マニュアル</li>
+      <li>Excelやスプレッドシート</li>
+      <li>入力フォーム</li>
+      <li>営業日報</li>
+      <li>商談報告</li>
+      <li>問い合わせ履歴</li>
+      <li>顧客へのメール</li>
+      <li>会議資料</li>
+      <li>申請書</li>
+      <li>管理画面の画像</li>
+      <li>使用しているツールの一覧</li>
+    </ul>
+    <p class="lead reveal">機密情報や個人情報は、見えない状態にしていただいて構いません。</p>
+    <p class="lead reveal">言葉だけではなく、実際の仕事を確認することで、<b style="color:#fff">本人も気づいていないムダや、仕事が止まりやすい場所</b>まで見つけます。</p>
+  </div>
+</section>
+
+<!-- ================= 設計書 ================= -->
+<section class="sec below-fold" id="report">
+  <div class="wrap">
+    <div class="wrap-text" style="padding:0">
+      <p class="kicker reveal">DELIVERABLE</p>
+      <h2 class="h2 reveal">お渡しするのは、御社専用の<br>「<span class="accent">AI社員採用設計書</span>」です。</h2>
+      <p class="lead reveal">分析結果は、一冊の設計書にまとめてお渡しします。</p>
+    </div>
+    <div class="report-layout">
+      <div class="report-visual reveal">
+        <!-- 設計書モックアップ（インラインSVG・通信ゼロ） -->
+        <svg viewBox="0 0 360 470" role="img" aria-label="AI社員採用設計書の表紙イメージ">
+          <defs>
+            <linearGradient id="cov" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#16161C"/><stop offset="1" stop-color="#0A0A0E"/>
+            </linearGradient>
+            <filter id="ds" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#0A0A0E" flood-opacity="0.28"/>
+            </filter>
+          </defs>
+          <g filter="url(#ds)">
+            <rect x="26" y="18" width="308" height="424" rx="12" fill="url(#cov)"/>
+            <rect x="26" y="18" width="308" height="424" rx="12" fill="none" stroke="rgba(255,255,255,.08)"/>
+            <rect x="26" y="18" width="8" height="424" rx="4" fill="#E60027"/>
+            <text x="58" y="86" font-family="sans-serif" font-size="12" letter-spacing="4" fill="#FF6B7E" font-weight="700">CONFIDENTIAL</text>
+            <text x="58" y="140" font-family="sans-serif" font-size="30" fill="#FFFFFF" font-weight="900">AI社員</text>
+            <text x="58" y="178" font-family="sans-serif" font-size="30" fill="#FFFFFF" font-weight="900">採用設計書</text>
+            <rect x="58" y="200" width="46" height="4" fill="#E60027"/>
+            <text x="58" y="238" font-family="sans-serif" font-size="13" fill="rgba(255,255,255,.65)">御社専用に設計した</text>
+            <text x="58" y="260" font-family="sans-serif" font-size="13" fill="rgba(255,255,255,.65)">AI活用の全体設計と導入計画</text>
+            <g fill="none" stroke="rgba(255,255,255,.25)" stroke-width="1.6" stroke-linecap="round">
+              <path d="M58 310h180M58 332h140M58 354h164M58 376h120"/>
+            </g>
+            <g>
+              <rect x="58" y="398" width="112" height="26" rx="13" fill="#E60027"/>
+              <text x="114" y="416" font-family="sans-serif" font-size="12" fill="#fff" text-anchor="middle" font-weight="700">審査制・無料</text>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="report-list">
+        <div class="report-item reveal"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><div><h4>現在の課題</h4><p>御社が優先して解決すべき課題を整理します。</p></div></div>
+        <div class="report-item reveal"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><div><h4>AI社員を雇うべきか</h4><p>現時点で、AIを導入する価値があるかをお伝えします。</p></div></div>
+        <div class="report-item reveal"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><div><h4>分析した仕事</h4><p>どの仕事を調べ、どのように評価したかを示します。</p></div></div>
+        <div class="report-item reveal"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><div><h4>御社専用のAI社員候補</h4><p>御社の課題と仕事に合わせて設計した候補をご提案します。</p></div></div>
+        <div class="report-item reveal"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><div><h4>最初に雇うべきAI社員</h4><p>最も優先度が高いAI社員と、その理由を明確にします。</p></div></div>
+        <div class="report-item reveal"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><div><h4>AI社員の仕事内容</h4><p>何を担当し、何を担当しないのかを整理します。</p></div></div>
+        <div class="report-item reveal"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><div><h4>人とAIの役割分担</h4><p>人、AI、現在のシステムが、それぞれ何を担当するかを示します。</p></div></div>
+        <div class="report-item reveal"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><div><h4>AIが自分で進められる範囲</h4><p>どこまでAIが処理し、どのような場合に人へ確認するかを整理します。</p></div></div>
+        <div class="report-item reveal"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><div><h4>期待できる効果</h4><p>削減できる時間や改善の可能性を、根拠とともに試算します。</p></div></div>
+        <div class="report-item reveal"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><div><h4>導入時の注意点</h4><p>考えられるリスクや、先に整えるべきことをお伝えします。</p></div></div>
+        <div class="report-item reveal"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><div><h4>導入までの流れ</h4><p>AI社員が働き始めるまでの大まかな計画を示します。</p></div></div>
+        <div class="report-item reveal"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><div><h4>必要となる費用の目安</h4><p>導入時と運用後に必要となる費用の目安をお伝えします。</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 効果試算 ================= -->
+<section class="sec sec-dark below-fold" id="estimate">
+  <div class="wrap">
+    <div class="wrap-text" style="padding:0">
+      <p class="kicker reveal">ESTIMATE</p>
+      <h2 class="h2 reveal">効果は、<span style="color:#FF4D63">都合よく大きく</span>見せません。</h2>
+      <p class="lead reveal">たとえば、月に200件発生し、1件に15分かかる仕事がある場合、現在の作業時間は月50時間です。AIが作業の大部分を担当し、人が1件につき2分だけ確認する形になれば、人が使う時間は月約7時間になります。</p>
+    </div>
+    <div class="calc-card reveal">
+      <div class="calc-flow" aria-hidden="true">
+        <div class="calc-step"><p class="lbl">発生件数</p><p class="val">月200<small>件</small></p></div>
+        <span class="calc-arrow">×</span>
+        <div class="calc-step"><p class="lbl">1件あたり</p><p class="val">15<small>分</small></p></div>
+        <span class="calc-arrow">→</span>
+        <div class="calc-step"><p class="lbl">AI導入後は人の確認のみ</p><p class="val">1件 2<small>分</small></p></div>
+      </div>
+      <div class="bars">
+        <div class="bar-row">
+          <p class="bar-label"><span>現在の作業時間</span><b><span class="count" data-to="50">0</span>時間/月</b></p>
+          <div class="bar-track"><div class="bar-fill now" data-w="100"></div></div>
+        </div>
+        <div class="bar-row">
+          <p class="bar-label"><span>AI社員導入後（人の確認時間）</span><b>約<span class="count" data-to="7">0</span>時間/月</b></p>
+          <div class="bar-track"><div class="bar-fill after" data-w="14"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="wrap-text" style="padding:0">
+      <p class="lead reveal">しかし、すべての会社で同じ結果になるわけではありません。実際の削減時間は、例外の多さ、必要な確認、使用するシステムなどによって変わります。そのため、効果は一つの数字に決めつけず、次のように分けてお伝えします。</p>
+    </div>
+    <div class="scenarios">
+      <div class="scenario reveal"><span class="lv" aria-hidden="true"><i class="on"></i><i></i><i></i></span><h4>控えめに見た場合</h4><p>例外や確認が多めに残る前提での試算</p></div>
+      <div class="scenario reveal" data-d="1"><span class="lv" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i></span><h4>標準的に進んだ場合</h4><p>想定どおりに運用が定着した場合の試算</p></div>
+      <div class="scenario reveal" data-d="2"><span class="lv" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span><h4>最大限活用できた場合</h4><p>任せる範囲を広げきれた場合の試算</p></div>
+    </div>
+    <div class="wrap-text" style="padding:0">
+      <p class="lead reveal">確認できない情報は、推測で埋めません。<b style="color:#fff">「確認できた事実」と「現時点での仮定」を分けて</b>、判断できる形にします。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 働き方3型 ================= -->
+<section class="sec below-fold" id="modes">
+  <div class="wrap">
+    <div class="wrap-text" style="padding:0">
+      <p class="kicker reveal">WORK STYLE</p>
+      <h2 class="h2 reveal">AI社員は、最初から<br>何でも自動で行うわけではありません。</h2>
+      <p class="lead reveal">仕事内容によって、AIへ任せられる範囲は異なります。設計時には、AI社員の働き方も明確にします。</p>
+    </div>
+    <div class="modes">
+      <div class="mode reveal">
+        <span class="meter" aria-hidden="true"><i class="on"></i><i></i><i></i></span>
+        <h4>補助型</h4><p class="en">ASSIST</p>
+        <p>AIが文章の下書きや情報整理を行い、人が完成させます。</p>
+      </div>
+      <div class="mode reveal" data-d="1">
+        <span class="meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i></span>
+        <h4>確認型</h4><p class="en">REVIEW</p>
+        <p>AIが作業を行い、人が内容を確認してから実行します。</p>
+      </div>
+      <div class="mode reveal" data-d="2">
+        <span class="meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span>
+        <h4>条件付き自動型</h4><p class="en">AUTO WITH RULES</p>
+        <p>決められた範囲ではAIが自動で処理し、判断できない場合だけ人へ確認します。</p>
+      </div>
+    </div>
+    <div class="wrap-text" style="padding:0">
+      <p class="lead reveal">最初から完全自動を目指す必要はありません。<span class="em-line">安全性と精度を確認しながら、少しずつ任せる仕事を増やしていきます。</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= フロー ================= -->
+<section class="sec sec-alt below-fold" id="flow">
+  <div class="wrap-text">
+    <p class="kicker reveal">FLOW</p>
+    <h2 class="h2 reveal">お申し込みから<span class="accent">結果報告</span>まで</h2>
+    <div class="flow">
+      <div class="flow-item reveal">
+        <div class="flow-num"><span class="s">STEP</span><span class="n">1</span></div>
+        <div class="flow-body"><h4>お申し込み</h4><p>会社情報や、現在抱えている課題をご入力ください。入力内容を確認し、採用設計の対象となるかをご案内します。</p></div>
+      </div>
+      <div class="flow-item reveal">
+        <div class="flow-num"><span class="s">STEP</span><span class="n">2</span></div>
+        <div class="flow-body"><h4>追加のご質問</h4><p>最初の回答内容に合わせて、必要な情報を追加で確認します。すべての会社に同じ質問を行うことはありません。</p></div>
+      </div>
+      <div class="flow-item reveal">
+        <div class="flow-num"><span class="s">STEP</span><span class="n">3</span></div>
+        <div class="flow-body"><h4>業務資料のご提出</h4><p>可能な範囲で、現在使っている資料や管理表をご提出ください。機密情報や個人情報は伏せた状態で構いません。</p></div>
+      </div>
+      <div class="flow-item reveal">
+        <div class="flow-num"><span class="s">STEP</span><span class="n">4</span></div>
+        <div class="flow-body"><h4>必要に応じたオンライン面談</h4><p>文章や資料だけでは分からない部分を、オンラインで確認します。</p></div>
+      </div>
+      <div class="flow-item reveal">
+        <div class="flow-num"><span class="s">STEP</span><span class="n">5</span></div>
+        <div class="flow-body"><h4>御社専用のAI社員を設計</h4><p>御社の仕事を分析し、AI社員候補と、最初に雇うべき一名を設計します。</p></div>
+      </div>
+      <div class="flow-item reveal">
+        <div class="flow-num"><span class="s">STEP</span><span class="n">6</span></div>
+        <div class="flow-body"><h4>結果のご説明</h4><p>完成したAI社員採用設計書をもとに、選定理由や導入方法をご説明します。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= なぜ無料か・無料/有料 ================= -->
+<section class="sec below-fold" id="free">
+  <div class="wrap">
+    <div class="wrap-text" style="padding:0">
+      <p class="kicker reveal">PRICING</p>
+      <h2 class="h2 reveal">なぜ<span class="accent">無料</span>なのですか？</h2>
+      <p class="lead reveal">AI社員は、会社ごとに必要な役割が異なります。御社の仕事を確認せず、既製の商品を先に販売しても、本当に必要なAI社員をつくることはできません。</p>
+      <p class="lead reveal">そのため、私たちは有料サービスをご提案する前に、<b>AIを導入する価値があるのか。どの仕事を任せるべきなのか。現実的に実現できるのか。</b>を確認します。</p>
+      <p class="lead reveal">AI社員を導入する価値がある場合にだけ、実際の構築や配属をご提案します。無料だから内容を薄くするのではなく、<span class="em-line">有料サービスへ進むべきかを正しく判断するための採用設計</span>として提供しています。</p>
+    </div>
+    <div class="price-grid">
+      <div class="price-card free reveal">
+        <h3>無料で行うこと</h3>
+        <p class="sub">AI社員採用設計では、次の内容までを無料で行います。</p>
+        <ul>
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>現在の課題整理</li>
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>実際の業務の分析</li>
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>AIを導入すべきかの判断</li>
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>御社専用AI社員候補の設計</li>
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>最初に雇うべきAI社員の選定</li>
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>AI社員の仕事内容</li>
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>人とAIの役割分担</li>
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>AIが担当できる範囲</li>
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>期待できる効果</li>
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>主なリスク</li>
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>導入までの大まかな流れ</li>
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>費用の目安</li>
+        </ul>
+      </div>
+      <div class="price-card reveal" data-d="1">
+        <h3>有料サービスで行うこと</h3>
+        <p class="sub">実際にAI社員をつくり、御社の中で働ける状態にする部分は、有料サービスで行います。</p>
+        <ul class="muted">
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#9A9AA2" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 12h12"/></svg>AI社員の詳しい仕事設計</li>
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#9A9AA2" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 12h12"/></svg>AIへの指示内容の作成</li>
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#9A9AA2" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 12h12"/></svg>会社情報や業務資料の整理</li>
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#9A9AA2" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 12h12"/></svg>AIが使う知識の設定</li>
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#9A9AA2" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 12h12"/></svg>使用するツールの選定</li>
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#9A9AA2" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 12h12"/></svg>システム同士の連携</li>
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#9A9AA2" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 12h12"/></svg>自動処理の設定</li>
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#9A9AA2" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 12h12"/></svg>例外が起きた場合の対応設計</li>
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#9A9AA2" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 12h12"/></svg>利用できる社員の権限設定</li>
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#9A9AA2" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 12h12"/></svg>実際の業務を使った試験</li>
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#9A9AA2" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 12h12"/></svg>間違いや使いにくさの改善</li>
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#9A9AA2" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 12h12"/></svg>操作マニュアルの作成</li>
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#9A9AA2" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 12h12"/></svg>社員への説明と教育</li>
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#9A9AA2" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 12h12"/></svg>部署への正式配属</li>
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#9A9AA2" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 12h12"/></svg>導入後の効果測定</li>
+        </ul>
+      </div>
+    </div>
+    <p class="price-bridge reveal">無料で「<span class="accent">誰を雇うべきか</span>」を決め、<br>有料で「<span class="accent">実際に働ける状態</span>」をつくります。</p>
+  </div>
+</section>
+
+<!-- ================= おすすめ企業 ================= -->
+<section class="sec sec-alt below-fold" id="fit">
+  <div class="wrap">
+    <div class="wrap-text" style="padding:0">
+      <p class="kicker reveal">FIT</p>
+      <h2 class="h2 reveal">このような企業に<span class="accent">おすすめ</span>です</h2>
+    </div>
+    <ul class="fit-grid">
+      <li class="fit-item reveal"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M8 12.5l2.7 2.7L16.5 9"/></svg>AIを導入したいが、何から始めるべきか分からない</li>
+      <li class="fit-item reveal" data-d="1"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M8 12.5l2.7 2.7L16.5 9"/></svg>人を増やさずに、処理できる仕事を増やしたい</li>
+      <li class="fit-item reveal" data-d="2"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M8 12.5l2.7 2.7L16.5 9"/></svg>社長や管理職に仕事が集中している</li>
+      <li class="fit-item reveal"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M8 12.5l2.7 2.7L16.5 9"/></svg>同じ入力や確認作業を何度も行っている</li>
+      <li class="fit-item reveal" data-d="1"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M8 12.5l2.7 2.7L16.5 9"/></svg>メール、LINE、表計算、社内システムが分かれている</li>
+      <li class="fit-item reveal" data-d="2"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M8 12.5l2.7 2.7L16.5 9"/></svg>問い合わせや追客の対応漏れがある</li>
+      <li class="fit-item reveal"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M8 12.5l2.7 2.7L16.5 9"/></svg>特定の社員しか分からない仕事がある</li>
+      <li class="fit-item reveal" data-d="1"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M8 12.5l2.7 2.7L16.5 9"/></svg>新人教育や引き継ぎに時間がかかっている</li>
+      <li class="fit-item reveal" data-d="2"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M8 12.5l2.7 2.7L16.5 9"/></svg>AIツールを契約したが、社内で使われていない</li>
+      <li class="fit-item reveal"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#E60027" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M8 12.5l2.7 2.7L16.5 9"/></svg>AI開発会社へ相談する前に、何をつくるべきか整理したい</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="sec below-fold" id="faq">
+  <div class="wrap-text">
+    <p class="kicker reveal">FAQ</p>
+    <h2 class="h2 reveal">よくある<span class="accent">ご質問</span></h2>
+    <div class="faq-list">
+      <details class="faq-item reveal">
+        <summary><span class="q">Q.</span>AIに詳しくなくても申し込めますか？<span class="plus" aria-hidden="true"></span></summary>
+        <p class="faq-a">はい。AIに関する知識は必要ありません。御社の仕事や、現在困っていることを教えてください。AIの種類や実現方法は、こちらで整理します。</p>
+      </details>
+      <details class="faq-item reveal">
+        <summary><span class="q">Q.</span>どの業種でも申し込めますか？<span class="plus" aria-hidden="true"></span></summary>
+        <p class="faq-a">法人・事業者であればお申し込みいただけます。ただし、業務内容や必要な情報によって、採用設計をお受けできない場合があります。</p>
+      </details>
+      <details class="faq-item reveal">
+        <summary><span class="q">Q.</span>申し込めば必ずAI社員を提案されますか？<span class="plus" aria-hidden="true"></span></summary>
+        <p class="faq-a">いいえ。分析の結果、AIを使わない方がよい場合は、AI社員の採用をおすすめしません。</p>
+      </details>
+      <details class="faq-item reveal">
+        <summary><span class="q">Q.</span>必ず有料サービスを契約する必要がありますか？<span class="plus" aria-hidden="true"></span></summary>
+        <p class="faq-a">いいえ。設計結果をご確認いただき、実際にAI社員をつくりたい場合のみ、有料サービスをご検討ください。</p>
+      </details>
+      <details class="faq-item reveal">
+        <summary><span class="q">Q.</span>業務資料を提出しなければいけませんか？<span class="plus" aria-hidden="true"></span></summary>
+        <p class="faq-a">正確な設計を行うため、可能な範囲でご提出をお願いしています。個人情報や機密情報は、見えない状態にしていただいて構いません。</p>
+      </details>
+      <details class="faq-item reveal">
+        <summary><span class="q">Q.</span>完全に自動で仕事をするAI社員をつくれますか？<span class="plus" aria-hidden="true"></span></summary>
+        <p class="faq-a">仕事内容によって異なります。人の補助をする形、人の確認後に処理する形、一定の範囲で自動処理する形など、安全性を考慮して設計します。</p>
+      </details>
+      <details class="faq-item reveal">
+        <summary><span class="q">Q.</span>現在使用しているシステムを変更する必要がありますか？<span class="plus" aria-hidden="true"></span></summary>
+        <p class="faq-a">必ずしも変更する必要はありません。現在のシステムを活用できるか、新しいツールが必要かも含めて確認します。</p>
+      </details>
+      <details class="faq-item reveal">
+        <summary><span class="q">Q.</span>結果だけ受け取って、自社で導入してもよいですか？<span class="plus" aria-hidden="true"></span></summary>
+        <p class="faq-a">はい。ただし、無料でお渡しするのは採用方針と大まかな設計です。詳細な指示内容、システム設定、連携方法などは含まれません。</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= クロージング ================= -->
+<section class="sec sec-dark closing below-fold" id="closing">
+  <div class="wrap-text">
+    <p class="kicker reveal" style="justify-content:center;display:flex">PHILOSOPHY</p>
+    <h2 class="h2 reveal">AIを入れることから、<span style="color:#FF4D63">始めない。</span></h2>
+    <p class="lead reveal">会社が先に考えるべきなのは、どのAIツールを使うかではありません。</p>
+    <p class="lead reveal">どの仕事をAIに任せるのか。どの判断を人が続けるのか。何を変えれば、会社がもっとよくなるのか。</p>
+    <p class="lead reveal">そこを整理してから、必要なAI社員を決めます。</p>
+    <p class="closing-slogan reveal">AIを<span class="comma">、</span>雇おう<span class="period">。</span></p>
+    <p class="lead reveal">ただし、誰を雇うかは、会社ごとに違います。<br>御社の仕事を確認し、本当に必要なAI社員を、一社ごとに設計します。</p>
+    <div class="reveal" style="margin-top:40px">
+      <p class="badge-free">審査制・無料｜AI社員採用設計</p><br>
+      <a class="btn" href="#entry"><span class="nb">御社専用のAI社員を</span><span class="nb">無料で設計する</span><span class="arrow" aria-hidden="true">→</span></a>
+      <p class="cta-note">入力いただいた内容を確認後、対象となる企業様へ次の流れをご案内します。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 申込フォーム ================= -->
+<section class="sec sec-alt below-fold" id="entry">
+  <div class="wrap-text">
+    <p class="kicker reveal">ENTRY</p>
+    <h2 class="h2 reveal">まずは、現在困っていることを<br>教えてください。</h2>
+    <p class="lead reveal">AIの知識や、詳しい導入計画は必要ありません。</p>
+    <p class="lead reveal">「この仕事に時間がかかっている」<br>「この対応を誰かに任せたい」<br>「人を採用するべきか迷っている」</p>
+    <p class="lead reveal">その段階で構いません。御社の仕事を確認し、<span class="em-line">AI社員を雇う価値があるかどうか</span>から判断します。</p>
+
+    <form class="entry-box reveal" id="entryForm" novalidate>
+      <div class="field">
+        <label for="f-company">会社名・屋号<span class="req">必須</span></label>
+        <input type="text" id="f-company" name="company" autocomplete="organization" required placeholder="例）株式会社◯◯">
+      </div>
+      <div class="field">
+        <label for="f-name">お名前<span class="req">必須</span></label>
+        <input type="text" id="f-name" name="name" autocomplete="name" required placeholder="例）山田 太郎">
+      </div>
+      <div class="field">
+        <label for="f-email">メールアドレス<span class="req">必須</span></label>
+        <input type="email" id="f-email" name="email" autocomplete="email" required placeholder="例）info@example.co.jp">
+      </div>
+      <div class="field">
+        <label for="f-tel">電話番号<span class="opt">任意</span></label>
+        <input type="tel" id="f-tel" name="tel" autocomplete="tel" placeholder="例）052-000-0000">
+      </div>
+      <div class="field">
+        <label for="f-industry">業種<span class="opt">任意</span></label>
+        <select id="f-industry" name="industry">
+          <option value="">選択してください</option>
+          <option>建設・リフォーム・住宅</option>
+          <option>不動産</option>
+          <option>士業・コンサル・専門サービス</option>
+          <option>店舗ビジネス（飲食・美容・小売）</option>
+          <option>製造・卸売</option>
+          <option>その他サービス業（BtoB）</option>
+          <option>その他</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="f-issue">現在困っていること<span class="req">必須</span></label>
+        <textarea id="f-issue" name="issue" required placeholder="例）問い合わせ対応に追われて、営業の追客まで手が回っていない。どこからAIに任せられるのか知りたい。"></textarea>
+      </div>
+      <label class="consent">
+        <input type="checkbox" id="f-consent" required>
+        <span>ご入力いただいた情報は、AI社員採用設計のご案内・ご連絡のみに利用します。<a href="privacy.html" style="text-decoration:underline">プライバシーポリシー</a>に同意のうえお申し込みください。</span>
+      </label>
+      <button type="submit" class="btn" style="width:100%" id="submitBtn">AI社員採用設計に申し込む<span class="arrow" aria-hidden="true">→</span></button>
+      <p class="form-msg" id="formMsg" role="status"></p>
+      <p class="cta-note" style="text-align:center">審査制・無料｜法人・事業者向け。入力内容を確認後、対象となる企業様へ次の流れをご案内します。</p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= モバイル固定CTA ================= -->
+<div class="float-cta" id="floatCta">
+  <a href="#entry">御社専用のAI社員を無料で設計する<span aria-hidden="true">→</span></a>
+</div>
+
+<!-- ================= フッター ================= -->
+<footer class="footer">
+  <div class="wrap">
+    <p class="brand" style="color:#fff">
+      <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#E60027"/><text x="32" y="43" font-family="Arial, sans-serif" font-size="28" font-weight="900" fill="#fff" text-anchor="middle">AI</text></svg>
+      <span class="brand-name">AIを<span class="comma">、</span>雇おう<span class="comma">。</span>｜AI社員採用設計</span>
+    </p>
+    <p>運営：ユーアイシティ株式会社（UIcity）</p>
+    <div class="footer-notes">
+      <p>※本サービスは法人・事業者向けです。<br>※「AI社員」はサービス上の呼称であり、法的な雇用関係にある従業員を意味するものではありません。<br>※効果の試算は前提条件に基づく参考値であり、成果を保証するものではありません。</p>
+    </div>
+    <p><a href="privacy.html">プライバシーポリシー</a></p>
+    <p class="footer-copy">© UIcity Inc. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+document.documentElement.classList.add('js');
+
+/* ===== 設定 =====
+   差し替え: フォーム送信先（GAS WebアプリURL。assets/form_gas.gs をデプロイして貼る）
+   空のままだと送信時に案内メッセージを表示します（公開前に必ず設定）。 */
+var FORM_ENDPOINT = "";
+
+var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ===== ヘッダー背景 ===== */
+var header = document.getElementById('header');
+var onScrollHeader = function(){
+  header.classList.toggle('is-solid', window.scrollY > 40);
+};
+addEventListener('scroll', onScrollHeader, {passive:true});
+onScrollHeader();
+
+/* ===== モバイル固定CTA（ヒーロー通過後に表示・フォーム到達で隠す） ===== */
+var floatCta = document.getElementById('floatCta');
+var entrySec = document.getElementById('entry');
+var onScrollCta = function(){
+  var pastHero = window.scrollY > innerHeight * .9;
+  var nearForm = entrySec.getBoundingClientRect().top < innerHeight;
+  floatCta.classList.toggle('show', pastHero && !nearForm);
+};
+addEventListener('scroll', onScrollCta, {passive:true});
+
+/* ===== スクロール出現 ===== */
+var io = new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); }
+  });
+},{threshold:.12, rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+/* ===== ヒーロー: 回転チップ ===== */
+var roles = [
+  '商談後の追客漏れを防ぐAI社員',
+  '問い合わせに一次対応するAI社員',
+  '入金予定と未入金案件を確認するAI社員',
+  '会議内容から担当者と期限を整理するAI社員',
+  '新入社員からの質問に答えるAI社員',
+  '営業報告から管理者向けの報告を作るAI社員',
+  '緊急度の高い問い合わせを見つけるAI社員',
+  '社内資料から必要な情報を探して回答するAI社員'
+];
+var rotator = document.getElementById('rotator');
+if(rotator && !reduced){
+  var ri = 0;
+  setInterval(function(){
+    rotator.classList.add('out');
+    setTimeout(function(){
+      ri = (ri + 1) % roles.length;
+      rotator.textContent = roles[ri];
+      rotator.classList.remove('out');
+    }, 400);
+  }, 3200);
+}
+
+/* ===== ヒーロー: ネットワーク粒子（軽量Canvas） ===== */
+var cv = document.getElementById('net');
+if(cv && !reduced){
+  var ctx = cv.getContext('2d');
+  var dpr = Math.min(devicePixelRatio || 1, 2);
+  var W, H, pts = [], running = true;
+  var resize = function(){
+    W = cv.clientWidth; H = cv.clientHeight;
+    cv.width = W * dpr; cv.height = H * dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    var n = Math.min(70, Math.max(34, Math.floor(W/22)));
+    pts = [];
+    for(var i=0;i<n;i++){
+      pts.push({
+        x: Math.random()*W, y: Math.random()*H,
+        vx:(Math.random()-.5)*.35, vy:(Math.random()-.5)*.35,
+        r: Math.random()*1.6+.8,
+        red: Math.random() < .16
+      });
+    }
+  };
+  resize();
+  addEventListener('resize', resize);
+  document.addEventListener('visibilitychange', function(){ running = !document.hidden; });
+  var heroVisible = true;
+  new IntersectionObserver(function(es){ heroVisible = es[0].isIntersecting; })
+    .observe(document.getElementById('top'));
+  var LINK = 130;
+  (function tick(){
+    requestAnimationFrame(tick);
+    if(!running || !heroVisible) return;
+    ctx.clearRect(0,0,W,H);
+    for(var i=0;i<pts.length;i++){
+      var p = pts[i];
+      p.x += p.vx; p.y += p.vy;
+      if(p.x < -20) p.x = W+20; if(p.x > W+20) p.x = -20;
+      if(p.y < -20) p.y = H+20; if(p.y > H+20) p.y = -20;
+      for(var j=i+1;j<pts.length;j++){
+        var q = pts[j], dx = p.x-q.x, dy = p.y-q.y, d2 = dx*dx+dy*dy;
+        if(d2 < LINK*LINK){
+          var a = 1 - Math.sqrt(d2)/LINK;
+          ctx.strokeStyle = (p.red||q.red) ? 'rgba(230,0,39,'+(a*.34)+')' : 'rgba(255,255,255,'+(a*.16)+')';
+          ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y); ctx.stroke();
+        }
+      }
+      ctx.fillStyle = p.red ? 'rgba(255,77,99,.9)' : 'rgba(255,255,255,.55)';
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.2832); ctx.fill();
+    }
+  })();
+}
+
+/* ===== 効果試算: バー＋カウンター ===== */
+var calc = document.querySelector('.calc-card');
+if(calc){
+  new IntersectionObserver(function(es,obs){
+    if(!es[0].isIntersecting) return;
+    obs.disconnect();
+    calc.querySelectorAll('.bar-fill').forEach(function(b){ b.style.width = b.dataset.w + '%'; });
+    calc.querySelectorAll('.count').forEach(function(c){
+      var to = +c.dataset.to, t0 = null, DUR = 1600;
+      if(reduced){ c.textContent = to; return; }
+      var step = function(t){
+        if(!t0) t0 = t;
+        var k = Math.min((t-t0)/DUR, 1);
+        k = 1 - Math.pow(1-k, 3);
+        c.textContent = Math.round(to * k);
+        if(k < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    });
+  },{threshold:.4}).observe(calc);
+}
+
+/* ===== フォーム送信 ===== */
+var form = document.getElementById('entryForm');
+var msg  = document.getElementById('formMsg');
+var btn  = document.getElementById('submitBtn');
+form.addEventListener('submit', function(ev){
+  ev.preventDefault();
+  msg.className = 'form-msg';
+  if(!form.checkValidity()){
+    form.reportValidity();
+    return;
+  }
+  if(!FORM_ENDPOINT){
+    msg.className = 'form-msg ng';
+    msg.textContent = '申込フォームは現在準備中です。恐れ入りますが、時間をおいて再度お試しください。';
+    return;
+  }
+  var data = {
+    company: form.company.value.trim(),
+    name:    form.name.value.trim(),
+    email:   form.email.value.trim(),
+    tel:     form.tel.value.trim(),
+    industry:form.industry.value,
+    issue:   form.issue.value.trim(),
+    page:    location.href
+  };
+  btn.disabled = true;
+  btn.style.opacity = .6;
+  fetch(FORM_ENDPOINT, {
+    method:'POST',
+    headers:{'Content-Type':'text/plain;charset=UTF-8'}, /* GASのCORS簡易回避 */
+    body: JSON.stringify(data)
+  }).then(function(r){
+    if(!r.ok) throw new Error(r.status);
+    form.reset();
+    msg.className = 'form-msg ok';
+    msg.textContent = 'お申し込みを受け付けました。入力内容を確認のうえ、対象となる企業様へメールでご連絡します。';
+  }).catch(function(){
+    msg.className = 'form-msg ng';
+    msg.textContent = '送信に失敗しました。お手数ですが、時間をおいて再度お試しください。';
+  }).finally(function(){
+    btn.disabled = false;
+    btn.style.opacity = 1;
+  });
+});
+})();
+</script>
+</body>
+</html>

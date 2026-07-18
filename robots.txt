@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# 差し替え: 公開ドメイン確定後にURLを置換（Br11③=UIcityドメイン配下）
+Sitemap: https://ai.uicity.net/sitemap.xml
