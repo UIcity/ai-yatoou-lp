@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<!-- 40秒サービス動画のシーン描画（1920x1080固定）。?s=1〜9 でシーン切替。
+     ヘッドレスChromeで撮影して ffmpeg で組み立てる（build_video.py 参照） -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#0B0B0F;--ink:#1B1B20;--paper:#F6F4EE;--white:#fff;
+  --red:#E60012;--red-deep:#B4000E;--red-bright:#FF554A;--muted:#605F66;
+  --sans:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
+  --serif:"Shippori Mincho","Yu Mincho",serif;
+  --noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1920px;height:1080px;overflow:hidden}
+body{font-family:var(--sans);font-feature-settings:"palt";letter-spacing:.03em}
+.scene{position:absolute;inset:0;display:none}
+.scene.on{display:flex}
+.dark{background:
+  radial-gradient(46% 40% at 82% 14%, rgba(230,0,18,.12), transparent 70%),
+  linear-gradient(170deg,#12121A 0%, #0B0B0F 55%, #08080C 100%);color:#F0EEE8}
+.dark::after{content:"";position:absolute;inset:0;background:var(--noise);pointer-events:none}
+.light{background:
+  radial-gradient(46% 40% at 86% 10%, rgba(230,0,18,.07), transparent 70%),
+  linear-gradient(176deg,#FFFFFF 0%, #FBFAF7 58%, #F6F4EE 100%);color:var(--ink)}
+.grid::before{content:"";position:absolute;inset:0;
+  background-image:linear-gradient(rgba(20,18,12,.035) 1px, transparent 1px),linear-gradient(90deg, rgba(20,18,12,.035) 1px, transparent 1px);
+  background-size:96px 96px;mask-image:radial-gradient(80% 80% at 50% 40%, #000 0%, transparent 95%)}
+.dark.grid::before{background-image:linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px)}
+.center{align-items:center;justify-content:center;flex-direction:column;text-align:center}
+
+/* S1 問いかけ */
+#s1 .q{font-family:var(--serif);font-size:96px;font-weight:700;letter-spacing:.08em;line-height:1.7}
+#s1 .rule{width:2px;height:110px;background:linear-gradient(var(--red),transparent);margin:0 auto 60px}
+#s1 .sub{margin-top:48px;font-size:34px;letter-spacing:.3em;color:rgba(240,238,232,.5);font-weight:500}
+
+/* S2 経営者の声 */
+#s2{flex-direction:column;align-items:center;justify-content:center;gap:44px}
+#s2 .voice{display:flex;align-items:flex-start;gap:28px}
+#s2 .voice:nth-child(2){transform:translateX(120px)}
+#s2 .voice:nth-child(3){transform:translateX(-60px)}
+#s2 .av{width:92px;height:92px;border-radius:50%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;overflow:hidden;flex:none}
+#s2 .bub{background:rgba(255,255,255,.96);color:var(--ink);border-radius:8px 34px 34px 34px;padding:36px 52px;font-size:44px;font-weight:700;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+
+/* S3 転換 */
+#s3 .wrap3{display:flex;flex-direction:column;gap:56px;align-items:center}
+#s3 .no-line{position:relative;font-size:76px;font-weight:900;color:#B9B6AD}
+#s3 .no-line::after{content:"";position:absolute;left:-4%;right:-4%;top:52%;height:8px;background:var(--red);transform:rotate(-3deg);border-radius:4px}
+#s3 .yes-line{font-family:var(--serif);font-size:120px;font-weight:800;letter-spacing:.06em;color:var(--ink)}
+#s3 .yes-line em{font-style:normal;color:var(--red)}
+#s3 .yes-rule{width:520px;height:6px;background:var(--red);border-radius:3px;margin:8px auto 0}
+
+/* S4 AI社員証 */
+#s4{align-items:center;justify-content:center;gap:140px}
+.idcard{position:relative;width:560px;background:linear-gradient(158deg,#20202A 0%,#15151B 50%,#0F0F14 100%);
+  border:1px solid rgba(255,255,255,.18);border-radius:36px;padding:52px 52px 42px;
+  box-shadow:0 70px 150px rgba(0,0,0,.45), 0 0 110px rgba(230,0,18,.15), 0 1px 0 rgba(255,255,255,.16) inset;
+  transform:rotate(-2deg);color:#fff}
+.idcard::before{content:"";position:absolute;top:0;left:0;right:0;height:8px;border-radius:36px 36px 0 0;background:linear-gradient(90deg,var(--red-deep),var(--red) 45%,#FF5A4E)}
+.idcard .slot{width:80px;height:14px;border-radius:999px;background:rgba(255,255,255,.1);box-shadow:0 2px 3px rgba(0,0,0,.5) inset;margin:2px auto 34px}
+.idcard .head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:34px}
+.idcard .head .t{font-family:var(--serif);font-size:24px;font-weight:700;letter-spacing:.3em}
+.idcard .head .e{font-size:15px;letter-spacing:.24em;color:rgba(255,255,255,.4)}
+.idcard .face{display:flex;align-items:center;gap:28px;margin-bottom:34px}
+.idcard .avatar{width:118px;height:118px;border-radius:30px;flex:none;position:relative;
+  background:radial-gradient(120% 120% at 30% 20%, #FF4B3E 0%, var(--red) 45%, #8E000B 100%);
+  box-shadow:0 16px 40px rgba(230,0,18,.4);display:flex;align-items:center;justify-content:center}
+.idcard .avatar span{font-size:42px;font-weight:900}
+.idcard .avatar::after{content:"";position:absolute;inset:9px;border:1.5px solid rgba(255,255,255,.22);border-radius:22px}
+.idcard .role-lb{font-size:16px;letter-spacing:.26em;color:rgba(255,255,255,.42);margin-bottom:10px}
+.idcard .role{font-size:27px;font-weight:700;line-height:1.6}
+.idcard .rows{border-top:1px solid rgba(255,255,255,.09);padding-top:26px;display:grid;gap:14px;margin-bottom:30px}
+.idcard .rows div{display:flex;justify-content:space-between;font-size:19px}
+.idcard .rows dt{color:rgba(255,255,255,.4)}
+.idcard .rows dd{color:rgba(255,255,255,.85);font-weight:500}
+.idcard .foot{display:flex;justify-content:space-between;align-items:flex-end}
+.idcard .issuer{font-size:15px;letter-spacing:.2em;color:rgba(255,255,255,.4)}
+.seal{width:120px;height:120px;filter:drop-shadow(0 8px 18px rgba(230,0,18,.35))}
+#s4 .txt .eyebrow{display:flex;align-items:center;gap:18px;font-size:26px;font-weight:700;letter-spacing:.3em;color:var(--red);margin-bottom:36px}
+#s4 .txt .eyebrow::before{content:"";width:56px;height:3px;background:var(--red)}
+#s4 .txt h2{font-size:88px;font-weight:900;line-height:1.5;letter-spacing:.02em}
+#s4 .txt h2 em{font-style:normal;color:var(--red)}
+#s4 .txt .sub{margin-top:30px;font-size:36px;color:var(--muted);font-weight:500}
+
+/* S5 設計書+誠実 */
+#s5{align-items:center;justify-content:center;gap:150px;background:#F7F6F1}
+.doc{position:relative;width:520px;height:700px}
+.doc .page{position:absolute;inset:0;background:#fff;border-radius:12px;box-shadow:0 30px 80px rgba(20,18,12,.18);border:1px solid #EEEBE3}
+.doc .p1{transform:rotate(4.5deg) translate(18px,8px)}
+.doc .p2{transform:rotate(-3.5deg) translate(-14px,4px)}
+.doc .cover{position:absolute;inset:0;border-radius:14px;overflow:hidden;
+  background:linear-gradient(158deg,#1C1C23 0%,#111116 55%,#0C0C10 100%);
+  border:1px solid rgba(255,255,255,.1);box-shadow:0 44px 110px rgba(20,18,12,.35);
+  padding:64px 60px;display:flex;flex-direction:column;color:#F4F2EC}
+.doc .cover::before{content:"";position:absolute;top:0;bottom:0;left:0;width:16px;background:linear-gradient(var(--red-deep),var(--red))}
+.doc .cl{font-size:17px;letter-spacing:.34em;color:var(--red-bright);font-weight:700;margin-bottom:56px}
+.doc h3{font-family:var(--serif);font-size:56px;font-weight:700;line-height:1.6;letter-spacing:.1em}
+.doc .rule{width:70px;height:4px;background:var(--red);margin:44px 0 40px}
+.doc p{font-size:22px;color:rgba(255,255,255,.6);line-height:2}
+.doc .foot{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end}
+.doc .foot small{font-size:16px;letter-spacing:.2em;color:rgba(255,255,255,.42)}
+#s5 .txt h2{font-family:var(--serif);font-size:74px;font-weight:700;line-height:2;letter-spacing:.06em}
+#s5 .txt h2 em{font-style:normal;color:var(--red)}
+#s5 .txt .sub{margin-top:26px;font-size:34px;color:var(--muted)}
+
+/* S6 審査制・無料 */
+#s6 .badge{display:inline-flex;align-items:center;gap:26px;border:4px solid var(--red);color:var(--red);
+  font-size:64px;font-weight:900;letter-spacing:.22em;padding:38px 90px;border-radius:999px;background:rgba(230,0,18,.04)}
+#s6 .logo{height:84px;width:auto;filter:brightness(0);margin-bottom:70px}
+#s6 .sub{margin-top:56px;font-size:40px;color:var(--muted);font-weight:700;letter-spacing:.1em}
+
+/* S7 クロージング */
+#s7 .slogan{position:relative;font-size:180px;font-weight:900;letter-spacing:.02em;color:#fff;line-height:1.2}
+#s7 .slogan .r{color:var(--red)}
+#s7 .slogan .seal{position:absolute;right:-190px;top:-70px;width:180px;height:180px;transform:rotate(-6deg)}
+#s7 .url{margin-top:90px;font-size:34px;letter-spacing:.14em;color:rgba(255,255,255,.55)}
+#s7 .logo{height:60px;width:auto;filter:brightness(0) invert(1);opacity:.9;margin-bottom:80px}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="sym-seal" viewBox="0 0 96 96">
+    <rect x="4" y="4" width="88" height="88" rx="10" fill="none" stroke="#E60012" stroke-width="5"/>
+    <text x="31" y="43" font-family="'Shippori Mincho','Yu Mincho',serif" font-size="30" font-weight="700" fill="#E60012" text-anchor="middle">採</text>
+    <text x="65" y="43" font-family="'Shippori Mincho','Yu Mincho',serif" font-size="30" font-weight="700" fill="#E60012" text-anchor="middle">用</text>
+    <text x="31" y="79" font-family="'Shippori Mincho','Yu Mincho',serif" font-size="30" font-weight="700" fill="#E60012" text-anchor="middle">設</text>
+    <text x="65" y="79" font-family="'Shippori Mincho','Yu Mincho',serif" font-size="30" font-weight="700" fill="#E60012" text-anchor="middle">計</text>
+  </symbol>
+</svg>
+
+<!-- S1 -->
+<section class="scene dark grid center" id="s1">
+  <div>
+    <div class="rule"></div>
+    <p class="q">こんな経験、<br>ありませんか。</p>
+    <p class="sub">経営者のあなたへ</p>
+  </div>
+</section>
+
+<!-- S2 -->
+<section class="scene dark grid" id="s2">
+  <div class="voice"><span class="av"><svg viewBox="0 0 24 24" style="width:52px;height:52px;margin-top:12px" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.5" r="4"/><path d="M3.5 21.5c1.6-4 5-6 8.5-6s6.9 2 8.5 6"/></svg></span><p class="bub">AI、何に使えばいい？</p></div>
+  <div class="voice"><span class="av"><svg viewBox="0 0 24 24" style="width:52px;height:52px;margin-top:12px" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.5" r="4"/><path d="M3.5 21.5c1.6-4 5-6 8.5-6s6.9 2 8.5 6"/></svg></span><p class="bub">契約したのに、使われていない</p></div>
+  <div class="voice"><span class="av"><svg viewBox="0 0 24 24" style="width:52px;height:52px;margin-top:12px" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.5" r="4"/><path d="M3.5 21.5c1.6-4 5-6 8.5-6s6.9 2 8.5 6"/></svg></span><p class="bub">逆に仕事が増えないか、不安</p></div>
+</section>
+
+<!-- S3 -->
+<section class="scene light grid center" id="s3">
+  <div class="wrap3">
+    <p class="no-line">どのAIツールを入れるか</p>
+    <div>
+      <p class="yes-line"><em>任せる仕事</em>を、決める。</p>
+      <div class="yes-rule"></div>
+    </div>
+  </div>
+</section>
+
+<!-- S4a / S4b（roleだけ差し替え） -->
+<section class="scene light grid" id="s4">
+  <div class="idcard">
+    <div class="slot"></div>
+    <div class="head"><span class="t">AI社員証</span><span class="e">EMPLOYEE CARD</span></div>
+    <div class="face">
+      <div class="avatar"><span>AI</span></div>
+      <div>
+        <p class="role-lb">担 当 業 務</p>
+        <p class="role" id="roleText">商談後の追客漏れを防ぐ</p>
+      </div>
+    </div>
+    <dl class="rows">
+      <div><dt>配属先</dt><dd>御社（一社ごとに設計）</dd></div>
+      <div><dt>設計</dt><dd>審査制・無料</dd></div>
+    </dl>
+    <div class="foot">
+      <p class="issuer">ISSUED BY UICITY</p>
+      <svg class="seal"><use href="#sym-seal"/></svg>
+    </div>
+  </div>
+  <div class="txt">
+    <p class="eyebrow">AI社員採用設計</p>
+    <h2>御社専用の<br><em>“AI社員”</em>を設計。</h2>
+    <p class="sub">御社の仕事を、一社ごとに分析します。</p>
+  </div>
+</section>
+
+<!-- S5 -->
+<section class="scene" id="s5">
+  <div class="doc">
+    <div class="page p1"></div>
+    <div class="page p2"></div>
+    <div class="cover">
+      <p class="cl">CONFIDENTIAL</p>
+      <h3>AI社員<br>採用設計書</h3>
+      <div class="rule"></div>
+      <p>御社専用に設計した<br>AI活用の全体設計と導入計画</p>
+      <div class="foot"><small>PREPARED BY UICITY</small><svg class="seal" style="width:110px;height:110px"><use href="#sym-seal"/></svg></div>
+    </div>
+  </div>
+  <div class="txt">
+    <h2>雇わない方がよければ、<br><em>そうお伝えします。</em></h2>
+    <p class="sub">売るための設計は、しません。</p>
+  </div>
+</section>
+
+<!-- S6 -->
+<section class="scene light grid center" id="s6">
+  <div>
+    <img class="logo" src="../assets/uicity-logo.svg" alt="UIcity" style="display:block;margin-left:auto;margin-right:auto">
+    <span class="badge">審査制・無料</span>
+    <p class="sub">御社の悩みを、お聞かせください。</p>
+  </div>
+</section>
+
+<!-- S7a / S7b（stampの有無） -->
+<section class="scene dark grid center" id="s7">
+  <div>
+    <img class="logo" src="../assets/uicity-logo.svg" alt="UIcity" style="display:block;margin-left:auto;margin-right:auto">
+    <p class="slogan">AIを<span class="r">、</span>雇おう<span class="r">。</span><svg class="seal" id="stamp" style="display:none"><use href="#sym-seal"/></svg></p>
+    <p class="url">ai-yatoou-lp.vercel.app</p>
+  </div>
+</section>
+
+<script>
+var p = new URLSearchParams(location.search);
+var s = p.get('s') || '1';
+var map = {
+  '1':'s1', '2':'s2', '3':'s3',
+  '4':'s4', '5':'s4', /* 4=役割A 5=役割B */
+  '6':'s5', '7':'s6',
+  '8':'s7', '9':'s7'  /* 8=印なし 9=印あり */
+};
+document.getElementById(map[s]).classList.add('on');
+if(s === '5') document.getElementById('roleText').textContent = '問い合わせに一次対応する';
+if(s === '9') document.getElementById('stamp').style.display = 'block';
+</script>
+</body>
+</html>
