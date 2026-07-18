@@ -3,40 +3,53 @@
 <head>
 <meta charset="UTF-8">
 <!-- OGP画像の生成元。assets/ogp.png (1200x630) を再生成する場合:
-     chrome --headless --screenshot=ogp.png --window-size=1200,630 この
-ファイル -->
+     chrome --headless=new --screenshot=ogp.png --window-size=1200,630 このファイル(要ローカルサーバー経由) -->
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{
   width:1200px;height:630px;overflow:hidden;position:relative;
   font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
   background:
-    radial-gradient(90% 120% at 85% 110%, rgba(230,0,39,.38), transparent 60%),
-    radial-gradient(70% 90% at -5% -10%, rgba(230,0,39,.16), transparent 55%),
-    linear-gradient(160deg, #101016 0%, #0A0A0E 60%, #08080C 100%);
-  color:#fff;display:flex;flex-direction:column;justify-content:center;padding:0 96px;
+    radial-gradient(50% 55% at 88% 8%, rgba(230,0,18,.09), transparent 70%),
+    radial-gradient(40% 40% at 2% 100%, rgba(230,0,18,.06), transparent 70%),
+    linear-gradient(172deg,#FFFFFF 0%, #FBFAF7 60%, #F4F2EC 100%);
+  color:#1B1B20;display:flex;flex-direction:column;justify-content:center;padding:0 96px;
 }
-.badge{
-  display:inline-flex;width:fit-content;align-items:center;gap:14px;
-  border:2px solid #FF4D63;color:#FF6B7E;border-radius:999px;
-  font-size:24px;font-weight:700;letter-spacing:.2em;padding:12px 34px;margin-bottom:44px;
-}
-h1{font-size:128px;font-weight:900;line-height:1.14;letter-spacing:.01em}
-h1 .r{color:#E60027}
-p.sub{font-size:38px;font-weight:700;margin-top:40px;color:rgba(255,255,255,.92)}
-p.small{font-size:26px;margin-top:18px;color:rgba(255,255,255,.6)}
 .grid{
   position:absolute;inset:0;
-  background-image:linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
-  background-size:60px 60px;pointer-events:none;
+  background-image:linear-gradient(rgba(20,18,12,.04) 1px, transparent 1px),linear-gradient(90deg, rgba(20,18,12,.04) 1px, transparent 1px);
+  background-size:64px 64px;pointer-events:none;
+}
+.logo{height:44px;width:auto;filter:brightness(0);margin-bottom:40px}
+.badge{
+  display:inline-flex;width:fit-content;align-items:center;gap:14px;
+  border:2px solid #E60012;color:#E60012;border-radius:999px;
+  font-size:22px;font-weight:700;letter-spacing:.18em;padding:10px 30px;margin-bottom:36px;
+  background:rgba(230,0,18,.04);
+}
+h1{font-size:126px;font-weight:900;line-height:1.12;letter-spacing:.01em;color:#0B0B0F}
+h1 .r{color:#E60012}
+p.sub{font-size:36px;font-weight:700;margin-top:36px;color:#1B1B20;max-width:860px}
+p.small{font-size:24px;margin-top:16px;color:#605F66}
+.seal{
+  position:absolute;right:84px;bottom:64px;width:120px;height:120px;transform:rotate(-5deg);
+  filter:drop-shadow(0 6px 14px rgba(230,0,18,.25));
 }
 </style>
 </head>
 <body>
 <div class="grid"></div>
+<img class="logo" src="uicity-logo.svg" alt="UIcity">
 <span class="badge">審査制・無料｜AI社員採用設計</span>
 <h1>AIを<span class="r">、</span>雇おう<span class="r">。</span></h1>
 <p class="sub">御社の仕事に合わせた“本当に必要なAI社員”を無料で設計します。</p>
 <p class="small">運営：ユーアイシティ株式会社（UIcity）</p>
+<svg class="seal" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+  <rect x="4" y="4" width="88" height="88" rx="10" fill="none" stroke="#E60012" stroke-width="5"/>
+  <text x="31" y="43" font-family="'Yu Mincho','Hiragino Mincho ProN',serif" font-size="30" font-weight="700" fill="#E60012" text-anchor="middle">採</text>
+  <text x="65" y="43" font-family="'Yu Mincho','Hiragino Mincho ProN',serif" font-size="30" font-weight="700" fill="#E60012" text-anchor="middle">用</text>
+  <text x="31" y="79" font-family="'Yu Mincho','Hiragino Mincho ProN',serif" font-size="30" font-weight="700" fill="#E60012" text-anchor="middle">設</text>
+  <text x="65" y="79" font-family="'Yu Mincho','Hiragino Mincho ProN',serif" font-size="30" font-weight="700" fill="#E60012" text-anchor="middle">計</text>
+</svg>
 </body>
 </html>
