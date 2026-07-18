@@ -1441,9 +1441,9 @@ section{scroll-margin-top:76px;position:relative}
 document.documentElement.classList.add('js');
 
 /* ===== 設定 =====
-   差し替え: フォーム送信先（GAS WebアプリURL。assets/form_gas.gs をデプロイして貼る）
-   空のままだと送信時に案内メッセージを表示します（公開前に必ず設定）。 */
-var FORM_ENDPOINT = "";
+   フォーム送信先（GAS Webアプリ=スプレッドシート記帳+info@uicity.netへメール通知。
+   ソースは assets/form_gas.gs。再デプロイ時はこのURLを差し替える） */
+var FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbwC3XdMjPdETMkHzTqy7UoFB3-COJddrP7ZXhPGCTTDRzjWOtbl1ZONmiLzu4WNhvu1/exec";
 
 var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
