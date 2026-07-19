@@ -42,14 +42,14 @@ body{font-family:var(--sans);font-feature-settings:"palt"}
 #title1 span{display:inline-block}
 #sub1{left:0;right:0;top:300px;text-align:center;font-size:30px;letter-spacing:.32em;color:rgba(240,238,232,.55);font-weight:500}
 #clock{right:200px;top:190px}
-#lamp{left:330px;top:330px;width:520px;height:420px;background:radial-gradient(ellipse at 50% 30%, rgba(255,214,140,.32), transparent 65%)}
+#lamp{left:430px;top:470px;width:620px;height:460px;background:radial-gradient(ellipse at 62% 40%, rgba(255,214,140,.26), transparent 65%)}
 
 /* ---- S2 吹き出し ---- */
 .wb{position:absolute;display:flex;align-items:flex-start;gap:22px}
 .wb .bub{background:rgba(255,255,255,.97);color:var(--ink);border-radius:10px 30px 30px 30px;
   padding:30px 46px;font-size:40px;font-weight:700;box-shadow:0 26px 70px rgba(0,0,0,.5)}
-.wb .avp{width:84px;height:84px;border-radius:50%;background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;flex:none;overflow:hidden}
+.wb .avp{width:96px;height:96px;border-radius:26px;background:#fff;border:1px solid #E5E2DA;
+  display:flex;align-items:center;justify-content:center;flex:none;box-shadow:0 18px 44px rgba(0,0,0,.45)}
 
 /* ---- S3 ---- */
 #no3{left:0;right:0;top:330px;text-align:center;font-size:68px;font-weight:900;color:#B9B6AD}
@@ -128,41 +128,138 @@ body{font-family:var(--sans);font-feature-settings:"palt"}
 
 <!-- ============ S1+S2: 夜のオフィス ============ -->
 <section class="sc bg-dark gridd" id="sc1">
+  <!-- オフィス背景(窓・月・ビル・植物・床) -->
+  <svg class="abs" id="officeBG" viewBox="0 0 1920 1080" style="inset:0;width:1920px;height:1080px">
+    <defs>
+      <linearGradient id="glassG" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#12121E"/><stop offset="1" stop-color="#0C0C16"/>
+      </linearGradient>
+      <radialGradient id="moonG" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="rgba(244,239,216,.5)"/><stop offset="1" stop-color="rgba(244,239,216,0)"/>
+      </radialGradient>
+    </defs>
+    <!-- 床 -->
+    <rect x="0" y="952" width="1920" height="128" fill="#0D0D13"/>
+    <rect x="0" y="950" width="1920" height="3" fill="rgba(255,255,255,.06)"/>
+    <!-- 窓 -->
+    <g>
+      <rect x="120" y="110" width="450" height="440" rx="16" fill="url(#glassG)" stroke="rgba(255,255,255,.14)" stroke-width="5"/>
+      <line x1="345" y1="113" x2="345" y2="547" stroke="rgba(255,255,255,.1)" stroke-width="4"/>
+      <circle cx="480" cy="205" r="60" fill="url(#moonG)"/>
+      <circle cx="480" cy="205" r="30" fill="#F1ECD4" opacity=".92"/>
+      <!-- ビル群 -->
+      <rect x="150" y="330" width="70" height="217" fill="#15151F"/>
+      <rect x="238" y="285" width="88" height="262" fill="#181822"/>
+      <rect x="344" y="360" width="64" height="187" fill="#141420"/>
+      <rect x="424" y="300" width="96" height="247" fill="#171721"/>
+      <g fill="#E8C77A" opacity=".5">
+        <rect x="163" y="350" width="12" height="9"/><rect x="188" y="350" width="12" height="9"/>
+        <rect x="163" y="378" width="12" height="9"/><rect x="188" y="406" width="12" height="9"/>
+        <rect x="252" y="305" width="13" height="10"/><rect x="278" y="305" width="13" height="10"/>
+        <rect x="252" y="336" width="13" height="10"/><rect x="304" y="336" width="13" height="10"/>
+        <rect x="278" y="398" width="13" height="10"/><rect x="252" y="460" width="13" height="10"/>
+        <rect x="356" y="380" width="11" height="8"/><rect x="380" y="410" width="11" height="8"/>
+        <rect x="438" y="320" width="13" height="10"/><rect x="464" y="352" width="13" height="10"/>
+        <rect x="490" y="320" width="13" height="10"/><rect x="438" y="416" width="13" height="10"/>
+      </g>
+      <line x1="150" y1="140" x2="240" y2="520" stroke="rgba(255,255,255,.05)" stroke-width="18"/>
+    </g>
+    <!-- 観葉植物 -->
+    <g id="plant">
+      <path d="M1770 952 L1866 952 L1852 862 L1784 862 Z" fill="#20202B"/>
+      <ellipse cx="1818" cy="860" rx="36" ry="10" fill="#161620"/>
+      <path d="M1816 858 Q1790 780 1748 762 Q1798 776 1818 830 Q1822 780 1800 726 Q1836 762 1826 842 Q1852 770 1888 756 Q1856 796 1832 856 Z" fill="#2E5040"/>
+    </g>
+  </svg>
   <div class="abs" id="lamp"></div>
   <!-- デスク+社長さん -->
   <svg class="abs" id="bossWrap" viewBox="0 0 900 760" style="left:180px;top:330px;width:900px;height:760px">
+    <defs>
+      <linearGradient id="suitG" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2B2B3A"/><stop offset="1" stop-color="#20202C"/>
+      </linearGradient>
+    </defs>
     <g id="bossG">
       <!-- 椅子 -->
-      <rect x="330" y="300" width="240" height="260" rx="26" fill="#1E1E28"/>
+      <rect x="326" y="238" width="248" height="330" rx="30" fill="#1E1E29"/>
+      <rect x="304" y="420" width="34" height="120" rx="16" fill="#1A1A24"/>
+      <rect x="562" y="420" width="34" height="120" rx="16" fill="#1A1A24"/>
       <!-- 体(スーツ) -->
-      <path d="M300 560 Q300 420 450 420 Q600 420 600 560 L600 620 L300 620 Z" fill="#232330"/>
-      <path d="M420 430 L450 470 L480 430 L465 425 L450 445 L435 425 Z" fill="#F4F2EC"/>
-      <path d="M446 460 L454 460 L460 520 L440 520 Z" fill="#C4001F"/>
+      <path d="M295 620 Q295 445 450 445 Q605 445 605 620 Z" fill="url(#suitG)"/>
+      <path d="M400 452 L450 545 L432 462 Z" fill="#1B1B26"/>
+      <path d="M500 452 L450 545 L468 462 Z" fill="#1B1B26"/>
+      <path d="M424 448 L450 492 L476 448 L462 442 L450 462 L438 442 Z" fill="#F4F2EC"/>
+      <path d="M443 470 L457 470 L462 478 L456 486 L444 486 L438 478 Z" fill="#C4001F"/>
+      <path d="M448 486 L452 486 L458 560 L442 560 Z" fill="#C4001F"/>
       <!-- 頭 -->
       <g id="bossHead">
+        <circle cx="362" cy="338" r="14" fill="#EFC29C"/>
+        <circle cx="538" cy="338" r="14" fill="#EFC29C"/>
         <circle cx="450" cy="330" r="88" fill="#F2C9A4"/>
-        <path d="M362 320 Q360 232 450 232 Q540 232 538 320 L520 318 Q522 258 450 258 Q378 258 380 318 Z" fill="#3A3A44"/>
+        <path d="M372 372 Q450 428 528 372 Q510 412 450 416 Q390 412 372 372 Z" fill="#E9BC94" opacity=".55"/>
+        <path d="M358 302 Q354 226 450 222 Q546 226 542 302 L520 296 Q518 254 450 250 Q382 254 380 296 Z" fill="#454553"/>
+        <path d="M395 240 Q430 230 470 236" stroke="#5A5A68" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <!-- メガネ -->
+        <g stroke="#23232B" stroke-width="6" fill="rgba(255,255,255,.05)">
+          <rect x="390" y="314" width="54" height="42" rx="13"/>
+          <rect x="456" y="314" width="54" height="42" rx="13"/>
+          <line x1="444" y1="330" x2="456" y2="330"/>
+          <line x1="390" y1="330" x2="366" y2="334"/>
+          <line x1="510" y1="330" x2="534" y2="334"/>
+        </g>
+        <!-- 目(疲れ/笑い) -->
         <g id="eyesTired">
-          <rect x="398" y="330" width="34" height="6" rx="3" fill="#2A2A32"/>
-          <rect x="468" y="330" width="34" height="6" rx="3" fill="#2A2A32"/>
+          <path d="M403 340 Q417 346 431 340" stroke="#2A2A32" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <path d="M469 340 Q483 346 497 340" stroke="#2A2A32" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <path d="M406 360 Q417 365 428 361" stroke="#D9A883" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <path d="M472 360 Q483 365 494 361" stroke="#D9A883" stroke-width="5" fill="none" stroke-linecap="round"/>
         </g>
         <g id="eyesHappy" display="none">
-          <path d="M398 334 Q415 320 432 334" stroke="#2A2A32" stroke-width="7" fill="none" stroke-linecap="round"/>
-          <path d="M468 334 Q485 320 502 334" stroke="#2A2A32" stroke-width="7" fill="none" stroke-linecap="round"/>
+          <path d="M403 340 Q417 326 431 340" stroke="#2A2A32" stroke-width="7" fill="none" stroke-linecap="round"/>
+          <path d="M469 340 Q483 326 497 340" stroke="#2A2A32" stroke-width="7" fill="none" stroke-linecap="round"/>
         </g>
-        <rect x="394" y="300" width="40" height="8" rx="4" fill="#3A3A44" id="browL"/>
-        <rect x="466" y="300" width="40" height="8" rx="4" fill="#3A3A44" id="browR"/>
-        <path id="mouthSad" d="M424 394 Q450 380 476 394" stroke="#B06A50" stroke-width="7" fill="none" stroke-linecap="round"/>
-        <path id="mouthSmile" d="M420 386 Q450 406 480 386" stroke="#B06A50" stroke-width="7" fill="none" stroke-linecap="round" display="none"/>
+        <rect x="392" y="296" width="44" height="9" rx="4.5" fill="#454553" id="browL" transform="rotate(7 414 300)"/>
+        <rect x="464" y="296" width="44" height="9" rx="4.5" fill="#454553" id="browR" transform="rotate(-7 486 300)"/>
+        <path id="mouthSad" d="M426 396 Q450 382 474 396" stroke="#B06A50" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <path id="mouthSmile" d="M420 386 Q450 408 480 386" stroke="#B06A50" stroke-width="7" fill="none" stroke-linecap="round" display="none"/>
       </g>
       <!-- デスク -->
-      <rect x="60" y="620" width="780" height="34" rx="10" fill="#20202B"/>
-      <rect x="90" y="654" width="720" height="106" rx="8" fill="#181820"/>
+      <rect x="40" y="620" width="820" height="30" rx="8" fill="#262632"/>
+      <rect x="40" y="648" width="820" height="8" fill="#1B1B25"/>
+      <rect x="80" y="656" width="740" height="104" rx="8" fill="#171720"/>
+      <rect x="620" y="672" width="160" height="70" rx="6" fill="#1D1D28"/>
+      <circle cx="700" cy="707" r="7" fill="#2E2E3A"/>
+      <!-- 書類の山 -->
+      <g>
+        <rect x="120" y="596" width="150" height="10" rx="3" fill="#DDD9CE" transform="rotate(-2 195 600)"/>
+        <rect x="126" y="586" width="150" height="10" rx="3" fill="#E9E6DC" transform="rotate(1.5 200 590)"/>
+        <rect x="122" y="576" width="150" height="10" rx="3" fill="#F1EEE5" transform="rotate(-1 198 580)"/>
+        <rect x="128" y="566" width="150" height="10" rx="3" fill="#E4E1D6" transform="rotate(2 202 570)"/>
+      </g>
+      <!-- コーヒー -->
+      <g>
+        <rect x="318" y="580" width="52" height="44" rx="8" fill="#A6323C"/>
+        <path d="M370 590 Q392 594 388 610 Q384 622 368 618" stroke="#8E2A33" stroke-width="8" fill="none"/>
+        <ellipse cx="344" cy="580" rx="26" ry="6" fill="#7A232B"/>
+        <path id="steam1" d="M334 566 Q328 552 336 540 Q344 528 338 514" stroke="rgba(255,255,255,.5)" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <path id="steam2" d="M354 566 Q348 550 356 538 Q362 528 358 516" stroke="rgba(255,255,255,.35)" stroke-width="4" fill="none" stroke-linecap="round"/>
+      </g>
       <!-- ノートPC -->
       <g id="laptop">
-        <path d="M560 620 L780 620 L800 540 L580 540 Z" fill="#2A2A36"/>
-        <path d="M583 548 L793 548 L779 612 L567 612 Z" fill="#9AD1FF" id="lapGlow"/>
-        <rect x="540" y="616" width="270" height="10" rx="5" fill="#33333F"/>
+        <path d="M560 620 L784 620 L806 534 L582 534 Z" fill="#2A2A36"/>
+        <path d="M584 543 L797 543 L782 611 L567 611 Z" fill="#9AD1FF" id="lapGlow"/>
+        <circle cx="688" cy="578" r="7" fill="rgba(255,255,255,.7)"/>
+        <rect x="540" y="616" width="284" height="10" rx="5" fill="#33333F"/>
+      </g>
+      <!-- デスクライト -->
+      <g>
+        <polygon points="700,556 806,556 900,640 640,640" fill="rgba(255,214,140,.10)"/>
+        <ellipse cx="792" cy="612" rx="34" ry="10" fill="#20202C"/>
+        <path d="M790 612 L810 556" stroke="#2E2E3A" stroke-width="10" stroke-linecap="round"/>
+        <path d="M810 556 L756 522" stroke="#2E2E3A" stroke-width="10" stroke-linecap="round"/>
+        <circle cx="810" cy="556" r="8" fill="#3A3A48"/>
+        <path d="M756 522 L700 556 L742 580 Z" fill="#34343F"/>
+        <ellipse cx="722" cy="566" rx="20" ry="9" fill="#FFD98C" opacity=".9"/>
       </g>
     </g>
   </svg>
@@ -184,9 +281,9 @@ body{font-family:var(--sans);font-feature-settings:"palt"}
   <p class="abs" id="title1"></p>
   <p class="abs" id="sub1">経営者のあなたへ</p>
   <!-- 悩み吹き出し -->
-  <div class="wb" id="wb0" style="left:1030px;top:360px"><span class="avp"><svg viewBox="0 0 24 24" style="width:46px;height:46px;margin-top:10px" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.5" r="4"/><path d="M3.5 21.5c1.6-4 5-6 8.5-6s6.9 2 8.5 6"/></svg></span><p class="bub">AI、何に使えばいい？</p></div>
-  <div class="wb" id="wb1" style="left:1100px;top:555px"><span class="avp"><svg viewBox="0 0 24 24" style="width:46px;height:46px;margin-top:10px" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.5" r="4"/><path d="M3.5 21.5c1.6-4 5-6 8.5-6s6.9 2 8.5 6"/></svg></span><p class="bub">契約したのに、使われていない</p></div>
-  <div class="wb" id="wb2" style="left:980px;top:745px"><span class="avp"><svg viewBox="0 0 24 24" style="width:46px;height:46px;margin-top:10px" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.5" r="4"/><path d="M3.5 21.5c1.6-4 5-6 8.5-6s6.9 2 8.5 6"/></svg></span><p class="bub">逆に仕事が増えないか、不安</p></div>
+  <div class="wb" id="wb0" style="left:1030px;top:360px"><span class="avp"><svg viewBox="0 0 48 48" style="width:60px;height:60px"><rect x="6" y="8" width="36" height="25" rx="4" fill="none" stroke="#1B1B20" stroke-width="3"/><line x1="24" y1="33" x2="24" y2="39" stroke="#1B1B20" stroke-width="3"/><line x1="15" y1="40" x2="33" y2="40" stroke="#1B1B20" stroke-width="3" stroke-linecap="round"/><text x="24" y="27" text-anchor="middle" font-family="'Noto Sans JP',sans-serif" font-size="17" font-weight="900" fill="#E60012">?</text></svg></span><p class="bub">AI、何に使えばいい？</p></div>
+  <div class="wb" id="wb1" style="left:1100px;top:555px"><span class="avp"><svg viewBox="0 0 48 48" style="width:60px;height:60px"><path d="M13 5 L29 5 L37 13 L37 41 L13 41 Z" fill="none" stroke="#1B1B20" stroke-width="3" stroke-linejoin="round"/><path d="M29 5 L29 13 L37 13" fill="none" stroke="#1B1B20" stroke-width="3" stroke-linejoin="round"/><line x1="18" y1="20" x2="32" y2="20" stroke="#9B99A0" stroke-width="3" stroke-linecap="round"/><line x1="18" y1="26" x2="32" y2="26" stroke="#9B99A0" stroke-width="3" stroke-linecap="round"/><line x1="18" y1="32" x2="27" y2="32" stroke="#9B99A0" stroke-width="3" stroke-linecap="round"/><circle cx="36" cy="36" r="9" fill="#E60012"/><path d="M32.5 32.5 L39.5 39.5 M39.5 32.5 L32.5 39.5" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/></svg></span><p class="bub">契約したのに、使われていない</p></div>
+  <div class="wb" id="wb2" style="left:980px;top:745px"><span class="avp"><svg viewBox="0 0 48 48" style="width:60px;height:60px"><rect x="8" y="34" width="24" height="7" rx="2" fill="none" stroke="#1B1B20" stroke-width="3"/><rect x="10" y="26" width="24" height="7" rx="2" fill="none" stroke="#1B1B20" stroke-width="3" transform="rotate(-2 22 29)"/><rect x="9" y="18" width="24" height="7" rx="2" fill="none" stroke="#1B1B20" stroke-width="3" transform="rotate(1.5 21 21)"/><path d="M40 30 L40 12 M40 12 L34.5 18 M40 12 L45.5 18" stroke="#E60012" stroke-width="3.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p class="bub">逆に仕事が増えないか、不安</p></div>
   <div class="abs" id="dim1" style="inset:0;background:#05050A"></div>
 </section>
 
@@ -244,12 +341,23 @@ body{font-family:var(--sans);font-feature-settings:"palt"}
   <p id="sub6">御社の悩みを、お聞かせください。</p>
   <svg class="abs" id="boss6" viewBox="300 210 320 260" style="left:120px;top:700px;width:400px;height:325px">
     <g>
+      <circle cx="362" cy="338" r="14" fill="#EFC29C"/>
+      <circle cx="538" cy="338" r="14" fill="#EFC29C"/>
       <circle cx="450" cy="330" r="88" fill="#F2C9A4"/>
-      <path d="M362 320 Q360 232 450 232 Q540 232 538 320 L520 318 Q522 258 450 258 Q378 258 380 318 Z" fill="#3A3A44"/>
-      <path d="M398 334 Q415 320 432 334" stroke="#2A2A32" stroke-width="7" fill="none" stroke-linecap="round"/>
-      <path d="M468 334 Q485 320 502 334" stroke="#2A2A32" stroke-width="7" fill="none" stroke-linecap="round"/>
-      <rect x="394" y="296" width="40" height="8" rx="4" fill="#3A3A44"/>
-      <rect x="466" y="296" width="40" height="8" rx="4" fill="#3A3A44"/>
+      <path d="M372 372 Q450 428 528 372 Q510 412 450 416 Q390 412 372 372 Z" fill="#E9BC94" opacity=".55"/>
+      <path d="M358 302 Q354 226 450 222 Q546 226 542 302 L520 296 Q518 254 450 250 Q382 254 380 296 Z" fill="#454553"/>
+      <path d="M395 240 Q430 230 470 236" stroke="#5A5A68" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <g stroke="#23232B" stroke-width="6" fill="rgba(255,255,255,.05)">
+        <rect x="390" y="314" width="54" height="42" rx="13"/>
+        <rect x="456" y="314" width="54" height="42" rx="13"/>
+        <line x1="444" y1="330" x2="456" y2="330"/>
+        <line x1="390" y1="330" x2="366" y2="334"/>
+        <line x1="510" y1="330" x2="534" y2="334"/>
+      </g>
+      <path d="M403 342 Q417 328 431 342" stroke="#2A2A32" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <path d="M469 342 Q483 328 497 342" stroke="#2A2A32" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <rect x="392" y="294" width="44" height="9" rx="4.5" fill="#454553"/>
+      <rect x="464" y="294" width="44" height="9" rx="4.5" fill="#454553"/>
       <path d="M416 382 Q450 410 484 382" stroke="#B06A50" stroke-width="8" fill="none" stroke-linecap="round"/>
     </g>
   </svg>
@@ -378,7 +486,7 @@ function akParts(id){
 const AK4=akParts("aikun4"),AK5=akParts("aikun5"),AK7=akParts("aikun7");
 
 /* タイトルを1文字ずつ分解 */
-const t1="こんな経験、ありませんか。";
+const t1="こんな悩み、ありませんか。";
 $("title1").innerHTML=[...t1].map(c=>"<span>"+c+"</span>").join("");
 const T1SP=[...$("title1").querySelectorAll("span")];
 
@@ -418,7 +526,8 @@ const CF=[];
 
 /* 吹き出し・？のpop時刻 */
 const QT=[1.3,2.2,3.1];
-const WBT=[6.8,8.7,10.6];
+const WBT=[5.2,7.7,10.15];       /* 吹き出しポップ=各ナレーション開始と同期 */
+const WEND=[7.8,10.15,12.8];     /* 各悩みの読み上げ終了(ハイライト解除) */
 
 function blink(t,seed){const p=2.6+seed;const ph=((t+seed*1.7)%p);return ph<0.12?0.12:1}
 
@@ -461,31 +570,37 @@ window.seek=function(t){
     [...Array(3)].forEach((_,i)=>{
       const p=pop(t,QT[i],0.6);
       const fl=Math.sin((t-QT[i])*2.2+i)*8;
-      T($("qm"+i),"translateY("+(-fl-(t>QT[i]?10:0))+"px) scale("+p.s+")",p.o*(t<12?1:cl(1-nrm(t,12,12.8),0,1)));
+      T($("qm"+i),"translateY("+(-fl-(t>QT[i]?10:0))+"px) scale("+p.s+")",p.o*(t<11.2?1:cl(1-nrm(t,11.2,11.9),0,1)));
     });
     /* 汗 */
-    const sw=pop(t,10.2,0.5);
-    T($("sweat"),"translateY("+nrm(t,10.2,12)*26+"px) scale("+sw.s+")",sw.o);
-    /* タイトル: 1文字ずつ */
+    const sw=pop(t,10.15,0.5);
+    T($("sweat"),"translateY("+nrm(t,10.15,12)*26+"px) scale("+sw.s+")",sw.o);
+    /* コーヒーの湯気 */
+    $("steam1").style.opacity=.3+.22*Math.sin(t*1.9);
+    $("steam2").style.opacity=.22+.18*Math.sin(t*2.3+1.5);
+    $("steam1").setAttribute("transform","translate(0,"+(-((t*6)%14))+")");
+    $("steam2").setAttribute("transform","translate(0,"+(-((t*7+5)%14))+")");
+    /* タイトル: 1文字ずつ→最初の悩みが出る前に退場 */
     T1SP.forEach((sp,i)=>{
-      const k=nrm(t,1.7+i*0.085,2.05+i*0.085);
+      const k=nrm(t,1.5+i*0.08,1.85+i*0.08);
       sp.style.opacity=k;sp.style.transform="translateY("+(1-E.oc(k))*26+"px)";
     });
-    /* タイトルは吹き出しが出る前(6.1-6.7)に退場して衝突を避ける */
-    const tfade=cl(1-nrm(t,6.1,6.7),0,1);
-    $("sub1").style.opacity=nrm(t,3.4,4.2)*tfade;
+    const tfade=cl(1-nrm(t,4.35,4.95),0,1);
+    $("sub1").style.opacity=nrm(t,3.1,3.8)*tfade;
     $("title1").style.opacity=tfade;
-    /* 吹き出し */
+    /* 吹き出し: 各ナレーションと同期し、読まれている悩みをハイライト */
     [0,1,2].forEach(i=>{
       const p=pop(t,WBT[i],0.55);
+      const active = t>=WBT[i] && t<WEND[i];
+      const after = t>=WEND[i];
       const fl=Math.sin((t-WBT[i])*1.6+i*2)*7;
       const el=$("wb"+i);
-      el.style.opacity=p.o;
-      el.style.transform="translateY("+(-fl)+"px) scale("+p.s+")";
+      el.style.opacity=p.o*(after?0.5:1);
+      el.style.transform="translateY("+(-fl)+"px) scale("+(p.s*(active?1.04:(after?0.96:1)))+")";
       el.style.transformOrigin="left top";
     });
     /* 徐々に暗く */
-    $("dim1").style.opacity=nrm(t,10.8,12.9)*0.4;
+    $("dim1").style.opacity=nrm(t,11.9,12.95)*0.35;
   }else{dots(DOTS1,t,false)}
 
   /* ---- 白ワイプ(S2→S3) ---- */
