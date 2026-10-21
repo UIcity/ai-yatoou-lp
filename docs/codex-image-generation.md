@@ -51,7 +51,7 @@ codex login
 | 症状 | 対処 |
 |---|---|
 | `Codex login: Not logged in` | ターミナルで `codex login` を実行して ChatGPT でログイン |
-| `imagegen skill: not found` | `npm install -g @openai/codex@latest` で Codex CLI を更新し、一度 `codex` を起動する |
+| `imagegen skill: not found` | Codex を一度実行すると `~/.codex/skills/.system/imagegen` に同梱スキルが展開される（例: `codex exec --skip-git-repo-check "hi"`）。それでも無ければ `npm install -g @openai/codex@latest` で更新 |
 | クラウド版 Claude Code（claude.ai/code）で動かない | 環境のネットワーク設定で `auth.openai.com` `chatgpt.com` `api.openai.com` を許可するか、ローカルの Claude Code で実行する |
 | 1 回の生成に 1〜3 分かかる | 正常です。Codex のエージェント 1 ターン分が走ります |
 
